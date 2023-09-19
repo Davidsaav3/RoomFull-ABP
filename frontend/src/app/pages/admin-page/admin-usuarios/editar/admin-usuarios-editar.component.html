@@ -1,0 +1,184 @@
+<div class="p-5 " id="content" data-page="detalles">
+    <section id="profile">
+        <div>
+
+            <div class="col pb-4">
+                <div class="col d-flex" style="justify-content: space-between;">
+                    <div class="d-flex" style="align-items: center;">
+                        <img class="profile-pic " [src]="imagen" crossorigin="anonymous">
+                        <h3 class="p-0 m-0"><strong>{{this.usuario.nombreUsuario}}</strong></h3>
+                    </div>
+                    <div>
+                        <button _ngcontent-hvl-c68="" class="btn text-white btn m-0 py-0" style="height: 40px; background-color: var(--secondary-color);" (click)="volver()">Volver</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="d-flex">
+                <div class="col card p-3 m-2" style="background-color: rgb(245, 245, 245);">
+                    <h4 class="">Perfil</h4>
+                    <form id="editarform" (ngSubmit)="editar()" [formGroup]="editarForm">
+
+                        <!-- Input usuario -->
+                        <div class="form-group col elementos">
+                            <label for="inputnombreUsuario">Nombre usuario</label>
+                            <input type="text" class="form-control" formControlName="nombreUsuario" (change)="cambioCheckForm();" id="inputnombreUsuario" placeholder="Nombre de usuario">
+                            <div class="invalid-feedback">
+                                Este campo no debe estar vacío.
+                            </div>
+                        </div>
+
+                        <div class="d-flex">
+                            <!-- Input nombre -->
+                            <div class="form-group col-6 elementos">
+                                <label for="inputnombre">Nombre</label>
+                                <input type="text" class="form-control" formControlName="nombre" id="inputnombre" (change)="cambioCheckForm();" placeholder="Nombre">
+                                <div class="invalid-feedback">
+                                    Este campo no debe estar vacío.
+                                </div>
+                            </div>
+
+                            <!-- Input apellidos -->
+                            <div class="form-group col-6 elementos ms-2">
+                                <label for="inputApellidos">Apellidos</label>
+                                <input type="text" class="form-control" formControlName="apellidos" id="inputApellidos" placeholder="Apellidos">
+                            </div>
+                        </div>
+
+                        <!-- Input email -->
+                        <div class="form-group col elementos">
+                            <label for="inputemail">Email</label>
+                            <input type="email" class="form-control" formControlName="email" (change)="cambioCheckForm();" id="inputemail" placeholder="Email" required="">
+                            <div class="invalid-feedback">
+                                {{ mensajeErrorEmail }}
+                            </div>
+                        </div>
+
+                        <div class="d-flex">
+                            <!-- Input teléfono -->
+                            <div class="form-group col-6 elementos">
+                                <label for="inputTelf">Teléfono</label>
+                                <input type="text" class="form-control" formControlName="telefono" id="inputTelf" placeholder="Teléfono">
+                            </div>
+
+                            <!-- Input empresa -->
+                            <div class="form-group col-6 elementos ms-2">
+                                <label for="inputempresa">Profesión</label>
+                                <input type="text" class="form-control" formControlName="empresa" id="inputEmpresa" placeholder="Profesión / Empresa">
+                            </div>
+                        </div>
+
+                        <!-- Botón de Editar -->
+                        <div class="d-grid mt-3">
+                            <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Editar</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="col card p-3 m-2" style="background-color: rgb(245, 245, 245);">
+                    <h4 class="">Foto perfil</h4>
+
+                    <form (ngSubmit)="editarFoto()" [formGroup]="editarFotoForm">
+                        <!-- Grid de dos columnas para foto -->
+                        <div class="p-3 d-flex flex-column">
+                            <input type="file" accept="image/*" style="display:none;" id="inputimage" class="form-control" formControlName="image" (change)="cargararchivo($event); cambioCheckForm();" #fileUpload>
+                            <button type="button" class="btn text-white btn" style="background-color: var(--secondary-color);" (click)="fileUpload.click()">Selecciona foto de perfil</button>
+                            <div class="invalid-feedback">
+                                Debes seleccionar una imagen.
+                            </div>
+
+                            <img id="output" class='mx-auto my-2' src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" style="width:fit-content;height:150px ;" />
+                        </div>
+                        <!-- Botón de foto -->
+                        <div class="d-grid mt-5">
+                            <button class="btn btn-danger fw-bold mb-1" (click)="restablecer()">Restablecer foto</button>
+                            <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Cambiar foto</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col card p-3 m-2" style="background-color: rgb(245, 245, 245);">
+                    <h4>Descripción</h4>
+                      <form [formGroup]="formDesc" id="formDesc" (ngSubmit)="cambiarDescripcion(this)">
+                          <div class="mb-3 pb-0">
+                            <textarea placeholder="{{usuario.descripcion || 'Sin descripción'}}" class="form-control" formControlName="description" style="resize: none;" id="newDescription" rows="10"></textarea>
+                        </div>
+                        <div class="d-grid mt-5">
+                          <button style="background-color: var(--primary-color); margin-top:1vh" type="submit" class="btn btn-primary fw-bold">Cambiar descripción</button>
+                      </div>
+                      </form>
+                </div>
+
+
+
+
+                <div class="col card p-3 m-2" id="modalSus1"  style="background-color: rgb(245, 245, 245);">
+                    <h4 class="">Suscripción</h4>
+                    <div class="card p-4" style="height: 280px;">
+                        <p>{{suscription || 'Sin suscripción'}}</p>
+                    </div>
+                    <div class="d-grid mt-5">
+                        <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" (click)="suscripcion()">Cambiar suscripción</button>
+                    </div>
+                </div>
+
+                <div class="col card p-3 m-2" id="modalSus" style="display: none; background-color: rgb(245, 245, 245);">
+                        <div class="modal-cabecera">
+                            <h4 class="">Suscripción</h4>
+                        </div>
+                        <div class="modal-body m-0 p-0">
+                            <div class="card">
+                                <div id="tablaTipos">
+                                    <!-- <div class="listaTipoSus"> -->
+                                        <!-- <input type="radio" name="tipoSus" id="sin" class="radioInput">
+                                        <label for="sin" class="labelTipoSus">
+                                        <span>
+                                          Sin suscripción
+                                        </span>
+                                      </label> -->
+                                    <!-- </div> -->
+                                    <div *ngFor="let item of tipoSus" class="listaTipoSus">
+
+
+                                      <div *ngIf="item.nombre == this.nombreSus; then susActiva; else susNoActiva"></div>
+                                      <input *ngIf="item.nombre == this.nombreSus" type="radio" name="tipoSus" id="inputSus" class="radioInput">
+                                        <ng-template #susActiva>
+                                          <label for="{{item.nombre}}" id="activo" class="susActiva labelSus">
+                                            <span>
+                                                {{item.nombre}}
+                                            </span>
+                                            <span>
+                                                {{item.precio}} €
+                                            </span>
+                                          </label>
+                                        </ng-template>
+
+                                      <ng-template #susNoActiva>
+                                        <label for="{{item.nombre}}" id="{{item.uid}}" class="labelSus" (click)="seleccionarSus(item.uid);">
+                                          <span>
+                                              {{item.nombre}}
+                                          </span>
+                                          <span>
+                                              {{item.precio}} €
+                                          </span>
+                                        </label>
+                                      </ng-template>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button style="background-color: var(--secondary-color);" class="btn btn-primary fw-bold" (click)="cerrarModal()">Atras</button>
+                            <!-- <button class="ms-1 btn btn-danger fw-bold" (click)="restablecerDatos()">Restablecer</button> -->
+                            <button style="background-color: var(--primary-color);" style="background-color: var(--primary-color);" class="ms-1 btn btn-primary fw-bold" (click)="aceptar()">Aceptar</button>
+                        </div>
+                    </div>
+            </div>
+
+
+        </div>
+    </section>
+</div>

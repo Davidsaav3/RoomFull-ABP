@@ -1,0 +1,40 @@
+<app-cookie-notice></app-cookie-notice>
+
+<div *ngIf="!siPrivado; then ifTodo; else ifPrivado;"></div>
+<ng-template #ifTodo>
+
+  <div *ngIf="siModelo; then ifModelo; else ifNoModelo"></div>
+  <ng-template #ifModelo>
+    <div id="page-container">
+      <div id="content-wrapper">
+          <app-navbar></app-navbar>
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #ifNoModelo>
+    <div id="page-container">
+      <div id="content-wrapper">
+          <app-navbar></app-navbar>
+          <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </ng-template>
+
+
+</ng-template>
+
+<ng-template #ifPrivado>
+  <div id="page-container">
+    <div id="content-wrapper">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-template>
+
+
+
+
+

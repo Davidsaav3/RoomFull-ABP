@@ -1,0 +1,62 @@
+<div class=" d-flex p-2">
+
+    <div class="d-flex col-4">
+        <div class="">
+            <!-- <button type="button" title="Mostrar / Ocultar UI" (click)="backClicked()" class="btn btn-dark"> volver  </button> -->
+        </div>
+        <div _ngcontent-htr-c86="" class="d-flex ms-2 uiTop" style="flex-direction: column;">
+            <div>
+                <h3 style="align-items:center;" class="d-flex m-0"><strong>{{this.titulo}}</strong></h3>
+            </div>
+            <div style="pointer-events: all;">
+                <span><img style="height: 20px; width: 20px; border-radius: 100%;" class="" src={{this.imagenUsu}}> <a routerLink="/user/modelo/{{this.usuario}}" target="_blank" class="h5 text-dark mb-0 link-dark" style="text-decoration:none; cursor: pointer; font-size: 20px;"> {{this.usuario}}</a></span>
+                <a *ngIf="this.uidDuenyo != this.miId" class="btn profile-edit-btn ms-2" style="background-color: rgb(228, 228, 228); color: black;" (click)="MostrarModalConversacion()"><i _ngcontent-tuc-c100="" class="bi bi-chat-left-fill"></i></a>
+            </div>
+        </div>
+        <!--{{this.imagenUsu}}-->
+    </div>
+
+    <div class="ms-2 col-4 d-flex justify-content-center">
+        <!--{{this.titulo}}-->
+    </div>
+
+    <div style="padding-right:2vw" class="ms-2 col-4 d-flex justify-content-end">
+        <button class="btn btn-secondary botonMenu" (click)="mostrarOcultarMenu()" type="button" id="dropdownMenuButton">
+        <i class="bi-caret-up-fill" style="color: white;"></i>
+          </button>
+    </div>
+
+</div>
+
+
+<div class="row ModalContainer" id="modalConver" style="justify-content: center;">
+    <div class="col-sm-9 col-md-7 col-lg-5">
+        <div class="card-body p-5 card rounded-25">
+            <h3><strong>Nueva conversación</strong></h3>
+
+            <form id="chatForm" (ngSubmit)="sendChat()" [formGroup]="chatForm">
+                <!-- Input código -->
+                <div class="form-group">
+                    <label for="inputAsunto"></label>
+                    <input type="text" class="form-control h" formControlName="asunto" placeholder="Asunto">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputMensaje"></label>
+                    <textarea type="text" class="form-control h" formControlName="mensajes" placeholder="Contenido..."></textarea>
+                </div>
+
+                <!-- Botón de chatear -->
+                <div _ngcontent-bik-c51="" class="d-flex form-group pt-4">
+                    <div class="col-6 pe-1">
+                        <div class="btn btn-primary fw-bold py-1" style="width: 100%; color: black; background-color: rgb(228, 228, 228);" (click)="EsconderModalEliminar()">Volver</div>
+                    </div>
+                    <div class="col-6 ps-1"><button class="btn btn-primary fw-bold py-1" style="width: 100%; color: white; background-color: var(--primary-color);" type="submit" [disabled]="waiting"><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Enviar</button></div>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>

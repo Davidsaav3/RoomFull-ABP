@@ -1,0 +1,52 @@
+<div style="background-color: rgb(245, 245, 245);" class="tarjetaModelo">
+
+    <div id="model-wrapper">
+        <app-engine2 modeloacargar="{{idmodelo}}" pagina="privado" id="engine-id"></app-engine2>
+        <app-ui-enlace id="ui-id"></app-ui-enlace>
+        <!--<div id="engineLoader" class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>-->
+    </div>
+
+
+    <!--<div class="row under-canvas m-0 p-3">
+        <div style="justify-content: space-between;" class="p-0 col d-flex">
+            <div class="m-0 p-0">
+                <button type="button" title="Visualizaciones" class="btn btn-dark m-2 ms-0">{{this.nvisitas}}<i class="fa-solid fa-eye ms-3 "></i></button>
+                <button type="button" title="Me gusta" [ngClass]="{'liked': this.liked==true}" (click)="darLikeGuardar('like')" class="btn btn-dark m-2">{{this.nvaloraciones}}<i class="fa-solid fa-heart ms-3 "></i></button>
+                <button type="button" title="Guardar" [ngClass]="{'saved': this.saved==true}" (click)="darLikeGuardar('guardar')" class="btn btn-dark m-2">{{this.nguardados}}<i class="fa-solid fa-bookmark ms-3 "></i></button>
+            </div>
+            <div class="m-0 p-0">
+                <button type="button" style="background-color: var(--primary-color);" *ngIf="modeloPropio" [routerLink]="'/editar-modelo/'+idmodelo" class="btn btn-primary m-2 p-1 pe-3"><i class="fas fa-edit m-2" aria-hidden="true"></i> Editar</button>
+                <button type="button" *ngIf="modeloPropio" id="btn-eliminar" (click)="MostrarModalEliminar();" class="btn btn-danger m-2 me-0"><i class="fas fa-trash-alt" aria-hidden="true"></i> Eliminar</button>
+            </div>
+        </div>
+
+        <div style="justify-content: space-between;" class="p-0 d-flex">
+            <div class="m-0 p-0">
+                <p class="modelDesc mt-2 m-0 p-0"> {{this.descripcion}} </p>
+            </div>
+            <div class="m-0 p-0">
+                <p class="modelDesc m-0"><i _ngcontent-tuq-c86="" class="fas fa-clock mx-1"></i>{{this.fechastr}}</p>
+            </div>
+        </div>
+
+    </div>-->
+
+
+    <!-- Mensaje modal para reutilizar, falta coger el css (marcado con las etiquetas mensaje modal ) y los dos metodos javascripts en lso archivos de este componente -->
+
+    <div class="ModalContainer ">
+        <div class="mensajemodal ">
+            <h4>¿Desea eliminar este modelo?</h4>
+            <p> Esta opción es irreversible</p>
+            <div>
+                <button type="button " (click)="eliminarModelo(); " class="btn btn-success ">Aceptar</button>
+                <button type="button " (click)="EsconderModalEliminar(); " class="btn btn-danger ">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

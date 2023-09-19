@@ -1,0 +1,114 @@
+<nav id="barra-nav" class="navbar navbar-expand-lg navbar-dark p-3">
+    <div class="container-fluid">
+
+        <!-- Compañía y logo -->
+        <a class="navbar-brand" routerLink="inicio">
+            <img src="./../../assets/page/roomfull-header.webp" alt="..." height="36">
+            <p class="fw-bold d-inline ms-2">RoomFull
+        </a>
+
+        <!--<div class="col-5 pe-4">
+            <ul id="navbar" class="navbar-nav ms-auto navbar-right">
+                <li class="nav-item" [style]="displayLogout">
+                    <a class="nav-link mx-2"  routerLink="premium" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-suit-diamond-fill me-1"></i>Suscripciones</a>
+                </li>
+            </ul>
+            <div class="flex-grow-0 chat-color">
+                <div  class="input-group">
+                    <input (keyup)="onKeySearch($event)" type="text" id="contenidoBusqueda" placeholder="Buscar..." class="form-control" >
+                    <div   class="input-group-append">
+                        <a  routerLink="" type="submit" class="btn btn-light" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+        <!-- Navbar reducida -->
+        <button class="navbar-toggler pt-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+            <!--<ul class="nav navbar-nav navbar-left">
+                <li class="nav-item">
+                    <a class="nav-link mx-2" routerLink="premium" routerLinkActive="active" ariaCurrentWhenActive="page">Suscripciones</a>
+                </li>
+            </ul>-->
+            <ul id="navbar" class="navbar-nav ms-auto navbar-right">
+                <li class="nav-item" [style]="display">
+                    <a class="nav-link mx-2 active" routerLink="login" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-box-arrow-in-left me-1"></i>Iniciar sesión</a>
+                </li>
+                <li class="nav-item" [style]="display">
+                    <a class="nav-link mx-2" routerLink="registro" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-pencil-square me-1"></i>Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2" routerLink="inicio" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-box-fill me-1"></i> Inicio</a>
+                </li>
+                <li class="nav-item" [style]="displayLogout">
+                    <a class="nav-link mx-2" (click)="irChat();" routerLink="chat" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-chat-left-fill me-1"></i>Conversaciones</a>
+                </li>
+                <li *ngIf="susPremium" class="nav-item" [style]="displayLogout">
+                    <a class="nav-link mx-2"  routerLink="subir-modelo" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-plus-circle-fill me-1"></i>Subir modelo</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link mx-2"  routerLink="premium" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-suit-diamond me-1"></i>Suscribirse</a>
+                </li>
+
+                <li class="nav-item" [style]="displayLogout">
+                    <!-- Example split danger button -->
+                    <div class="btn-group">
+                        <a type="button" (click)="irPerfil();" routerLink="user/modelo/{{this.nombreUsuario}}" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn nav-link mx-2"><img style='width: 20px; height: 20px; margin-right: 5px; border-radius:100%; border: 1px solid black' src={{imagenUsuario}}>{{nombreUsuario}}</a>
+                        <a type="button" class="btn dropdown-toggle dropdown-toggle-split" style="color:white;" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!--<li>
+                                <a class="dropdown-item mx-2" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-box-fill me-2" style="color: black;"></i>Inicio</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item mx-2" routerLink="chat" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-chat-left-fill me-2" style="color: black;"></i>Conversaciones</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item mx-2" routerLink="subir-modelo" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-plus-circle-fill me-1"></i>Subir modelo</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item mx-2" routerLink="user/modelo/{{this.nombreUsuario}}" routerLinkActive="active" ariaCurrentWhenActive="page"><img style='width: 20px; height: auto; margin-right: 5px; border-radius:100%; border: 1px solid black' src={{imagenUsuario}}>{{nombreUsuario}}</a>
+                            </li>-->
+                            <li>
+                                <a class="dropdown-item" routerLink="user/ajustes/{{this.nombreUsuario}}/premium" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-suit-diamond-fill me-2" style="color: black;"></i>Suscripción</a>
+                            </li>
+                            <div *ngIf="this.rol === 'Admin'; then ifAdmin;"></div>
+                            <ng-template #ifAdmin>
+                                <li [style]="displayLogout">
+                                    <a class="dropdown-item" routerLink="admin/administracion/usuarios" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-lock-fill me-2" style="color: black;"></i>Administrador</a>
+                                </li>
+                            </ng-template>
+                            <li>
+                                <a class="dropdown-item" routerLink="estadisticas/{{this.nombreUsuario}}" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-bar-chart-fill me-2" style="color: black;"></i>Estadísticas</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" routerLink="user/ajustes/{{this.nombreUsuario}}/perfil" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="bi bi-gear-fill me-2" style="color: black;"></i>Ajustes</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="nav-item" [style]="displayLogout">
+                                <a class="dropdown-item" style="cursor: pointer;" routerLinkActive="active" (click)="logout();"><i class="bi bi-box-arrow-right me-2" style="color: black;"></i>Cerrar sesión</a>
+                            </li>                        </ul>
+                    </div>
+                </li>
+                <!--<ng-template #ifAdmin>
+                    <li class="nav-item" [style]="displayLogout">
+                        <a class="nav-link mx-2" routerLink="admin/administracion/usuarios" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="fa fa-unlock-alt me-1"></i>Administrador</a>
+                    </li>
+                </ng-template>
+                <li class="nav-item" [style]="displayLogout">
+                    <a class="nav-link mx-2" style="cursor: pointer;" (click)="logout();"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+</nav>

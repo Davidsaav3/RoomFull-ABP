@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width-device-width, initial-scale=1">
+
+<head>
+    <meta charset="utf-8">
+    <title>Roomfull - FulLoop</title>
+    <base href="/">
+    <meta name="description" content="Roomfull es una plataforma web que te permite subir modelos 3D de casas para enseñarlas a tus clientes">
+    <meta name="keywords" content="Casas 3D, Roomfull, Tour virtual">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./assets/page/roomfull-header.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BZW0PZZF4N"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-BZW0PZZF4N');
+</script>
+
+<body>
+    <app-root></app-root>
+    <!-- https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1 -->
+    <script src="./assets/bootstrap.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <df-messenger id="chatbot-id" intent="WELCOME" style="background-color: #0073ca; display:none;" wait-open chat-icon="./assets/page/roul_blanco.png" chat-title="Roul" agent-id="ed187bd5-c286-4ead-bffa-31ac8e876acf" language-code="es"></df-messenger>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<section class="container-fluid bg-gris-claro">
+    <div class="row" style="align-items: center; height: 89vh; justify-content: center;">
+        <div class="col-sm-9 col-md-7 col-lg-5" >
+            <div class="card-body p-5 card rounded-25" *ngIf="this.state===0">
+
+                <h2 class=""><strong>Recuperar contraseña</strong></h2>
+                <p class="card-text my-1">Introduce el correo con el que te has registrado y te enviaremos un código de verificación.</p>
+                <form (ngSubmit)="nextState('email')">
+
+                    <!-- Input usuario -->
+                    <div [formGroup]="emailForm" class="form-group">
+                        <label for="inputEmail"></label>
+                        <input type="email" class="form-control" id="inputEmail" formControlName="emailRecov" placeholder="Introduce tu email">
+                        <div class="invalid-feedback">
+                            Debes introducir un email válido.
+                        </div>
+                    </div>
+
+                    <!-- Botón de recuperar -->
+                    <div class="d-grid mt-4">
+                        <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Envíame mi código</button>
+                    </div>
+
+                    <!-- Separador -->
+                    <div class="divider d-flex align-items-center my-4"></div>
+
+                    <!-- Link -->
+                    <p class="text-center text-muted mt-2 m-0">¿No tienes cuenta? <a routerLink="/registro" class="fw-bold text-body" style="text-decoration: none;">Regístrate</a></p>
+
+                </form>
+
+            </div>
+            <div class="card-body p-5 card rounded-25" *ngIf="this.state===1">
+
+                <h2 class=""><strong>Introduce el código</strong></h2>
+                <p class="card-text my-1">Introduce el código de verificación que se ha enviado a tu correo {{hiddenEmail}}</p>
+                <form (ngSubmit)="nextState('code')" [formGroup]="codigoForm">
+
+                    <!-- Input usuario -->
+                    <div class="form-group">
+                        <label for="inputCode"></label>
+                        <input type="text" class="form-control" formControlName="codigoVerif" id="inputCode" placeholder="Introduce el código">
+                        <div class="invalid-feedback">
+                            Debes introducir un código númerico válido.
+                        </div>
+                    </div>
+
+                    <!-- Botón de recuperar -->
+                    <div class="d-grid mt-3">
+                        <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Comprobar código</button>
+                    </div>
+
+                    <div class="d-grid my-3 mb-0">
+                        <button class="btn btn-danger fw-bold" type="button" (click)="prevState()">Volver a introducir correo</button>
+                    </div>
+
+
+
+                </form>
+
+            </div>
+            <div class="card-body p-5 card rounded-25" *ngIf="this.state===2">
+
+                <h2 class=""><strong>Introduce tu nueva contraseña</strong></h2>
+                <p class="card-text my-1">Introduce tu nueva contraseña y repitela en el siguiente campo.</p>
+                <form (ngSubmit)="nextState('passw')" [formGroup]="passwordForm">
+
+                    <!-- Input usuario -->
+                    <div class="form-group">
+                        <label for="inputPassw"></label>
+                        <input type="password" class="form-control" (change)="checkPassForm();" formControlName="passw" id="inputPassw" placeholder="Introduce una contraseña">
+                        <div class="invalid-feedback">
+                            Debes introducir una contraseña válida que cumpla lo siguiente.
+                            <ul>
+                                <li>Mínimo 9 caracteres</li>
+                                <li>Una letra minúscula</li>
+                                <li>Una letra mayúscula</li>
+                                <li>Un número</li>
+                                <li>Un carácter especial ({{caracteresEspeciales}})</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPasswRepe"></label>
+                        <input type="password" (change)="checkPassForm()" class="form-control" formControlName="passwRepe" id="inputPasswRepe" placeholder="Repite la contraseña">
+                        <div class="invalid-feedback">
+                            Las contraseñas deben coincidir.
+                        </div>
+                    </div>
+
+                    <!-- Botón de recuperar -->
+                    <div class="d-grid mt-2">
+                        <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Cambiar contraseña</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

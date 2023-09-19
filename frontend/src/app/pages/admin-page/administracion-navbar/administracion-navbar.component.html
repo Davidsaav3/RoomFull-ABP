@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div id="header-admin" class="py-3">
+            <ul class="nav" id="adminList">
+                <li class="m-4" data-page="usuarios" class="nav-item-admin">
+                    <a class="link-settings text-decoration-none margin-top text-dark" routerLink="usuarios" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('usuarios')">Usuarios</a>
+                </li>
+                <li class="m-4" data-page="modelos" class="nav-item-admin">
+                    <a class="link-settings text-decoration-none margin-top mt-5" routerLink="modelos" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('modelos')">Modelos</a>
+                </li>
+                <li class="m-4" data-page="suscripciones" class="nav-item-admin">
+                    <a class="link-settings text-decoration-none margin-top mt-5" routerLink="suscripciones" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('suscripciones')">Suscripciones</a>
+                </li>
+                <li class="m-4" data-page="discusiones" class="nav-item-admin">
+                    <a class="link-settings text-decoration-none margin-top mt-5" routerLink="discusiones" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('discusiones')">Conversaciones</a>
+                </li>
+                <li class="m-4" data-page="estadisticas" class="nav-item-admin">
+                  <a class="link-settings text-decoration-none margin-top mt-5" routerLink="metricas" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('estadisticas')">Métricas</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+</div>

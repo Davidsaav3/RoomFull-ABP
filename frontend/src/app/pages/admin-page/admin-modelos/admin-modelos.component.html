@@ -1,0 +1,153 @@
+<div class="ps-5 pt-4 pe-5 pb-4" id="content" data-page="usuarios">
+
+    <div class="row d-flex">
+        <!-- <div class="col-6"> -->
+            <!-- <h1 class="fw-bold mt-3">Modelos</h1> -->
+        <!-- </div> -->
+        <div class="col-6 pe-0">
+            <div _ngcontent-lbf-c90="" class="flex-grow-0 py-3 px-2 chat-color">
+                <div _ngcontent-lbf-c90="" _ngcontent-evc-c87="" class="input-group mb-3">
+                    <input _ngcontent-lbf-c90="" _ngcontent-evc-c87="" type="text" id="contenidoBusqueda" placeholder="Buscar..." class="form-control" (keyup)="onKeySearch($event)" [(ngModel)]="this.textoBusqueda">
+                    <div _ngcontent-lbf-c90="" _ngcontent-evc-c87="" class="input-group-append">
+                        <a _ngcontent-lbf-c90="" _ngcontent-evc-c87="" routerLink="/admin/administracion/modelos" type="submit" class="btn btn-light" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                            <i _ngcontent-lbf-c90="" _ngcontent-evc-c87="" class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="this.hayMod; then mostrarMod; else mostrarVacio" >
+        </div>
+        <ng-template #mostrarVacio >
+            <div style="margin-top:50px; display:flex; align-items:center;">
+                <p style="margin: 0 auto;">No hay modelos que mostrar</p>
+              </div>
+        </ng-template>
+        <ng-template #mostrarMod >
+        </ng-template>
+
+
+        <div class="col-lg-12">
+            <div class="main-box clearfix">
+                <div class="table-responsive">
+                    <table class="table user-list">
+                        <thead>
+                            <tr>
+                                <th class="text-center"><strong>Nombre</strong></th>
+                                <th class="text-center"><strong>Fecha de subida</strong></th>
+                                <th class="text-center"><strong>Visualizaciones</strong></th>
+                                <th class="text-center"><strong>Me gusta</strong></th>
+                                <th class="text-center"><strong>Guardados</strong></th>
+                                <th class="text-center"><strong>Opciones</strong></th>
+                                <th class="text-center"><input type="checkbox" class="hidden" name="cb" id="cb" (change)="seleccionarTodo($event)" >
+                                  <label for="cb">Seleccionar todos</label>
+
+                                  <div *ngIf="this.estaVacio; then noMostrar; else mostrar" >
+                                  </div>
+                                  <ng-template #noMostrar >
+                                  </ng-template>
+                                  <ng-template #mostrar >
+                                    <button type="button" (click)="MostrarModalesEliminar()"class=" ms-2 btn border-0 px-0 py-0">
+                                      <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                  </ng-template>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of modelos">
+                                <td class="text-center">
+                                    <h6><a routerLink="/modelo/{{item.uid}}" style="text-decoration: none;">{{item.nombre}}</a></h6>
+                                </td>
+                                <td class="text-center">
+                                    {{item.fecha | date: 'dd-MM-yyyy'}}
+                                </td>
+
+                                <td class="text-center">
+                                    <span class="label label-default">{{item.NVisitas}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="label label-default">{{item.NValoraciones}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="label label-default">{{item.NGuardados}}</span>
+                                </td>
+
+                                <td style="width: 20%;" class="text-center">
+                                    <a routerLink="/modelo/{{item.uid}}" class="table-link">
+                                        <span class="fa-stack">
+                                          <i class="fa fa-square fa-stack-2x"></i>
+                                          <i class="fa fa-eye fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                    <a routerLink="/admin/administracion/modelos/{{item.uid}}" class="table-link">
+                                        <span class="fa-stack">
+                                          <i class="fa fa-square fa-stack-2x"></i>
+                                          <i class="fa fa-info fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                    <a routerLink="/admin/administracion/modelos/{{item.uid}}/editar" class="table-link">
+                                        <span class="fa-stack">
+                                          <i class="fa fa-square fa-stack-2x"></i>
+                                          <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                    <button type="button" (click)="MostrarModalEliminar(item.uid)" class="table-link btn border-0 px-0 py-0">
+                                        <span class="fa-stack ">
+                                          <i class="fa fa-square fa-stack-2x"></i>
+                                          <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                  <input type="checkbox" class="check" (change)="getSusId($event, item.uid)"   [checked]="item.checked"  />
+                              </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="paginador mt-5 d-flex justify-content-center">
+                    <nav class="pagination-outer " aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <button type='button' class='btn btn-default' [disabled]="primero" (click)='menos()'>«</button>
+                            </li>
+                            <li class="page-item">
+                                <button type='button' class='btn btn-default page' *ngFor="let p of paginas" (click)='pagina(p)'>{{p+1}}</button>
+                            </li>
+                            <li class="page-item">
+                                <button type='button' class='btn btn-default' [disabled]="ultimo" (click)='mas()'>»</button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ModalContainer ">
+        <div class="mensajemodal ">
+            <h4>¿Desea eliminar este modelo?</h4>
+            <p class="text-center"> Esta opción es irreversible</p>
+            <div>
+                <button type="button " (click)="eliminarModelos(); " class="btn btn-success ">Aceptar</button>
+                <button type="button " (click)="EsconderModalEliminar(); " class="btn btn-danger ">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ModalContainer2 ">
+      <div class="mensajemodal2 ">
+          <h4>¿Desea eliminar los modelos seleccionados?</h4>
+          <h5 class="text-center">TOTAL: {{itemsSelector.length}}</h5>
+          <p class="text-center"> Esta opción es irreversible</p>
+          <div>
+              <button type="button " (click)="eliminarTodos(); " class="btn btn-success ">Aceptar</button>
+              <button type="button " (click)="EsconderModalEliminar2(); " class="btn btn-danger ">Cancelar</button>
+          </div>
+      </div>
+    </div>
+
+</div>

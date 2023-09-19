@@ -1,0 +1,77 @@
+<div class="ps-5 pt-4 pe-5 pb-4">
+
+        <div class="row" style=" flex-direction: column;">
+            <div class="col">
+                <div class="col d-flex justify-content-end">
+                    <button _ngcontent-hvl-c68="" class="btn text-white btn m-0 py-0" style="height: 40px; background-color: var(--secondary-color);" (click)="volver()">Volver</button>
+                </div>
+            </div>
+
+            <section class="container-fluid">
+                <div class="row " style="align-items: center; height: 65vh; justify-content: center;">
+                    <div class="col-sm-9 col-md-7 col-lg-5 " >
+                        <div class="card-body p-5 card bg-gris-claro rounded-25">
+                            <h3><strong>Nueva suscripción</strong></h3>
+
+                  <form id="registerform" (ngSubmit)="suscribir()" [formGroup]="tipoSuscripcionesForm"><!--[formGroup]="tipoSuscripcionesForm"-->
+
+                    <div class="d-flex form-group">
+                            
+                        <!-- Input nombre -->
+                        <div class="col-8 pe-1">
+                            <label for="inputnombre" >Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre" id="inputnombre" (change)="cambioCheckForm();" placeholder="Nombre">
+                            <div class="invalid-feedback">
+                                Debes incluir un nombre.
+                            </div>
+                        </div>
+
+                        <!-- Input precio -->
+                        <div class="col-2 pe-1">
+                            <label for="inputprecio">Precio</label>
+                            <input type="text" class="form-control" formControlName="precio" (change)="cambioCheckForm();" id="inputprecio" placeholder="Precio">
+                            <div class="invalid-feedback">
+                                Debes incluir un precio.
+                            </div>
+                        </div>
+
+                        <!-- Input modelos -->
+                        <div class="col-2 pe-1">
+                            <label for="inputmodelos">Modelos</label>
+                                <input type="number" class="form-control" formControlName="modelos" (change)="cambioCheckForm();" id="inputmodelos" placeholder="Cantidad de modelos">
+                                <div class="invalid-feedback">
+                                    Debes incluir una cantidad de modelos.
+                                </div>
+                            </div>
+                    </div>
+
+                        <!-- Input descripcion -->
+                        <div class="form-group mt-3">
+                            <label for="inputdescripcion ">Descripción</label>
+                            <textarea type="text" class="form-control" formControlName="descripcion" id="inputdescripcion" (change)="cambioCheckForm();" placeholder="Descripción"></textarea>
+                            <div class="invalid-feedback">
+                                Debes incluir una descripción.
+                            </div>
+                        </div>
+
+                        <!-- Input características -->
+                        <div class="form-group mt-3">
+                            <label for="inputcaract">Características</label>
+                            <textarea type="text" class="form-control" formControlName="caract" id="inputcaract" (change)="cambioCheckForm();" placeholder="Características"></textarea>
+                            <div class="invalid-feedback">
+                                Debes incluir características.
+                            </div>
+                        </div>
+
+                        <!-- Botón de guardar -->
+                        <div class="d-grid mt-4">
+                            <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Guardar</button>
+                        </div>
+
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>

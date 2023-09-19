@@ -1,0 +1,38 @@
+#barra-nav {
+    background-color: var(--primary-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* no quitar */
+    min-height: 10vh;
+    /* no quitar */
+    width: 100vw;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: black;
+    text-decoration: none;
+    background-color: var(--third-color);
+}
+
+.dropdown-item:hover {}
+
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+ :not(.btn-check)+.btn:active {
+    border-color: var(--primary-color);
+}
+
+.dropdown-toggle-split::after,
+.dropend .dropdown-toggle-split::after,
+.dropup .dropdown-toggle-split::after {
+    font-size: 26px;
+}
+
+.btn-group>.btn-group:not(:first-child),
+.btn-group>:not(.btn-check:first-child)+.btn {
+    padding-top: 12px;
+}

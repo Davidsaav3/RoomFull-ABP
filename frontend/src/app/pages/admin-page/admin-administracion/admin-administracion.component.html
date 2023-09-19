@@ -1,0 +1,41 @@
+<div class="d-flex">
+
+    <div id="header-admin" class="py-3">
+        <ul class="nav" id="adminList">
+            <li class="m-4" data-page="usuarios" class="nav-item-admin">
+                <a class="link-settings text-decoration-none margin-top text-dark" routerLink="usuarios" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('usuarios')">Usuarios</a>
+            </li>
+            <li class="m-4" data-page="modelos" class="nav-item-admin">
+                <a class="link-settings text-decoration-none margin-top mt-5" routerLink="modelos" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('modelos')">Modelos</a>
+            </li>
+            <li class="m-4" data-page="suscripciones" class="nav-item-admin">
+                <a class="link-settings text-decoration-none margin-top mt-5" routerLink="suscripciones" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('suscripciones')">Suscripciones</a>
+            </li>
+            <li class="m-4" data-page="discusiones" class="nav-item-admin">
+                <a class="link-settings text-decoration-none margin-top mt-5" routerLink="discusiones" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('discusiones')">Conversaciones</a>
+            </li>
+            <li class="m-4" data-page="estadisticas" class="nav-item-admin">
+                <a class="link-settings text-decoration-none margin-top mt-5" routerLink="metricas" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="cambiarRuta('estadisticas')">Métricas</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col pe-3 py-3" style="background-color: var(--third-color);">
+        <breadcrumb  #parent style="justify-content: flex-end;">
+            <ul class="breadcrumb m-0" style="height: 56px;">
+                <ng-template ngFor let-route [ngForOf]="parent.breadcrumbs">
+                    <li *ngIf="!route.terminal" class="breadcrumb-item">
+                        <a [routerLink]="[route.url]" class="breadcrumb-link">{{ route.displayName }}</a>
+                    </li>
+                    <li *ngIf="route.terminal" class="breadcrumb-item active">
+                        {{ route.displayName }}
+                    </li>
+                </ng-template>
+            </ul>
+        </breadcrumb>
+    </div>
+
+</div>
+<div>
+    <router-outlet></router-outlet>
+</div>

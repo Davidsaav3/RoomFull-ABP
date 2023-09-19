@@ -1,0 +1,257 @@
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 180px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+    .nombre {
+        align-content: center;
+        display: grid;
+        margin-left: 70px;
+    }
+
+    .cabecera-perfil {
+        display: flex;
+        padding: 30px;
+    }
+
+    .boton {
+        width: 200px;
+        margin: 20px;
+    }
+
+    .elementos {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .elementos>span:first-child {
+        background-color: aliceblue;
+        color: #000000;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .elementos>span:last-child {
+        margin-left: 10px;
+    }
+
+    .containerPerfil {
+        width: 100%;
+        margin-top: 3rem !important;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 1rem !important;
+        max-width: 550px;
+    }
+
+    .containerSuscripcion {
+        width: 100%;
+        margin-top: 3rem !important;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 1rem !important;
+        max-width: 300px;
+    }
+
+    .cabeceraContainer {
+        width: 100%;
+        padding: 1rem !important;
+    }
+
+    .containerDetalles {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .form-group {
+        margin-top: 10px;
+    }
+
+    .restablecer {
+        margin-left: 30px;
+    }
+
+    .suscripcion {
+        width: 100%;
+        margin-top: 3rem !important;
+        padding: 1rem !important;
+        max-width: 300px;
+        text-align: justify;
+    }
+
+    .suscripcionTitle {
+        text-align: center;
+        padding: 5px;
+    }
+
+    .suscripcion>span:first-child {
+        background-color: aliceblue;
+        color: #000000;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .suscripcion>span:last-child {
+        margin-left: 10px;
+    }
+
+    .modalSus {
+        background: rgba(0, 0, 0, 0.2);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        transition: all .5s;
+    }
+
+    .tarjeta {
+        background: #fff;
+        margin: 8% 20% 10% 20%;
+    }
+
+    .titulo {
+        text-align: center;
+        margin: 20px 20% 20px 20%;
+        padding-bottom: 20px;
+    }
+
+    .modal-body {
+        flex-direction: inline-block;
+        padding: 0px 20px 0px 20px;
+    }
+
+    .modal-body>div {
+        height: 320px;
+        margin-bottom: 10px;
+    }
+
+    .modal-body>div~div:last-child {
+        width: -webkit-fill-available;
+    }
+
+    .modal-body>div h3 {
+        margin: 4px;
+        text-align: center;
+    }
+
+    .modal-body>div>div {
+    }
+
+    #susTiempo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #susPago {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #susPago>span {
+        margin: 5px;
+    }
+
+    #susPago>select {
+        margin: 5px;
+    }
+
+    #susPago>button {
+        margin: 5px;
+        margin-top: 30px;
+    }
+
+    #susTiempo>span {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #susTiempo>input {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #susTiempo>span~span:last-child {
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    #tablaTipos {
+        flex-direction: column;
+        overflow-y: scroll;
+    }
+
+    #tablaTipos::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    #tablaTipos::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    #tablaTipos::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    #tablaTipos::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    #tablaTipos>.listaTipoSus {
+        margin: 10px;
+        min-height: 70px;
+        cursor: pointer;
+    }
+
+
+    .labelSus:hover{
+      background-color: #f1f1f1 !important;
+    }
+
+    #tablaTipos>.listaTipoSus>label {
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #tablaTipos>.listaTipoSus>label>span {
+        font-weight: bold;
+        float: right;
+    }
+
+    #tablaTipos>.listaTipoSus>label>span:first-child {
+        float: left;
+    }
+
+    .radioInput {
+        display: none;
+    }
+
+    input[type="radio"]:checked+label {
+        background-color: rgb(245, 245, 245);
+    }
+
+    @media all and (min-width: 1660px) {
+        /*.containerDetalles {
+            flex-direction: inherit;
+            align-items: unset;
+            justify-content: center;
+        }*/
+    }
+
+    .susActiva{
+      background-color: rgb(151, 151, 151) !important ;
+      border: black 2px groove;
+    }
+
+    .susActiva:hover{
+      background-color: rgb(151, 151, 151) !important ;
+    }
+

@@ -1,0 +1,98 @@
+<!-- <div class="card tarjetaModelo">
+    <article style="width: 100%; height: 200px; display: flex; flex-wrap: wrap; align-items: center; align-content: center; overflow: hidden;" class="">
+        <a routerLink="/modelo/{{uidModelo}}" target="_blank"><img loading="lazy" src="../../../../assets/uploads/imagenEscena/{{imagenPrevisualizacion}}" alt=" " class="card-img-top img-fluid imagePointer "></a>
+    </article>
+
+    <article class="text-left p-3">
+        <a routerLink="/modelo/{{uidModelo}}" target="_blank" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="modellink h5" style="margin-top:1em;"><strong>{{tituloModelo}}</strong></a>
+    </article>
+
+    <article class="d-flex justify-space-around p-3 pt-0 pb-0">
+        <button type="button" title="Visualizaciones" class="btn btn-link me-3">{{NVisitasModelo}}<i class="fa-solid fa-eye ms-3 "></i></button>
+        <button type="button" title="Me gusta" [ngClass]="{'liked': this.liked==true}" (click)="darLikeGuardar('like')" class="btn btn-link like-but me-3">{{NValoracionesModelo}}<i class="fa-solid fa-heart ms-3 "></i></button>
+        <button type="button" title="Guardar" [ngClass]="{'saved': this.saved==true}" (click)="darLikeGuardar('guardar')" class="btn btn-link">{{NGuardadosModelo}}<i class="fa-solid fa-bookmark ms-3 "></i></button>
+        <div class="row ps-1 pe-1 ms-1 ps-2 pe-2" *ngIf="bannerPriv=='true'" class="btn btn-link ms-3" [class]="bannerClass">{{bannerClass}}</div>
+    </article>
+
+    <article class="text-left p-3">
+        <p style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="modelDesc mb-0">{{descripcionModelo}}</p>
+        <a routerLink="/modelo/{{uidModelo}}" target="_blank" style="text-decoration: none; color: black;">
+            <p style="margin-top: 10px; font-weight: bold;">Leer más</p>
+        </a>
+    </article>
+</div> -->
+<div *ngIf="this.hayToken === true; then ifUsu; else ifNoUsu"></div>
+<ng-template #ifUsu>
+    <div class="tarjetaModelo" style="display: flex; justify-items: center;">
+
+        <div style="position: relative; padding:right">
+            <a routerLink="/modelo/{{uidModelo}}" target="_blank">
+                <span class="titulo">{{tituloModelo}}</span>
+            </a>
+            <button type="button" title="Me gusta" [ngClass]="{'liked': this.liked==true}" (click)="darLikeGuardar('like')" class="btn like-but "><i  class="fa-solid fa-heart"></i></button>
+        </div>
+        <div class="imagenTarjeta">
+            <a class="imagen" routerLink="/modelo/{{uidModelo}}" target="_blank">
+                <img loading="lazy" src="../../../../assets/uploads/imagenEscena/{{imagenPrevisualizacion}}" alt=" ">
+            </a>
+            <article class="info">
+                <a style="max-height: 12vh; text-overflow: ellipsis; overflow: hidden;" routerLink="/modelo/{{uidModelo}}" target="_blank">
+                    <span>
+                    {{descripcionModelo}}
+                </span>
+                </a>
+                <div *ngIf="mismodelos" style="justify-content: space-evenly; pointer-events: all;" class="d-flex">
+                    <a target="_blank" style="background-color: var(--primary-color); border-color: var(--primary-color); color:white;" routerLink="/editar-modelo/{{uidModelo}}" class="btn btn-info"><strong>Editar</strong></a>
+                    <a (click)="eliminarModelo()" class="btn btn-danger"><strong>Eliminar</strong></a>
+                </div>
+                <div class="stats">
+                    <button type="button" title="Visualizaciones" class="btn btn-link me-1 noth"><i class="fa-solid fa-eye me-2 "></i>{{NVisitasModelo}}</button>
+                    <button type="button" title="Me gusta" [ngClass]="{'liked': this.liked==true}" (click)="darLikeGuardar('like')" class="btn btn-link me-1">  <i  class="fa-solid fa-heart me-2 "></i>{{NValoracionesModelo}}</button>
+                    <button type="button" title="Guardar" [ngClass]="{'saved': this.saved==true}" (click)="darLikeGuardar('guardar')" class="btn btn-link me-1"><i  class="fa-solid fa-bookmark me-2 "></i>{{NGuardadosModelo}}</button>
+                    <button type="button" *ngIf="bannerPriv=='true'" class="btn btn-link me-1 pb-3" [class]="bannerClass">{{bannerClass}} </button>
+                </div>
+            </article>
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #ifNoUsu>
+
+    <!-- {{idtarjeta}} {{idtarjetaNumber % 3}} -->
+    <div style="position: relative;">
+        <div *ngIf="idtarjeta>'5'" class="blur-div"><button *ngIf="idtarjetaNumber % 4 == 1" type="button" (click)="registrate();" class="btn btn-dark">Inicia sesión para ver más</button></div>
+        <!-- idtarjeta>'5' -->
+        <div class="tarjetaModelo" style="display: flex; justify-items: center;z-index:9;">
+
+            <div style="position: relative; padding:right">
+                <a (click)="registrate();">
+                    <span class="titulo">{{tituloModelo}}</span>
+                </a>
+                <button type="button" title="Me gusta" [ngClass]="{'liked': this.liked==true}" (click)="darLikeGuardar('like')" class="btn like-but "><i  class="fa-solid fa-heart"></i></button>
+            </div>
+            <div class="imagenTarjeta">
+                <a class="imagen" (click)="registrate();">
+                    <img loading="lazy" src="../../../../assets/uploads/imagenEscena/{{imagenPrevisualizacion}}" alt=" ">
+                </a>
+                <article class="info">
+                    <a style="max-height: 12vh; text-overflow: ellipsis; overflow: hidden;" (click)="registrate();">
+                        <span>
+                    {{descripcionModelo}}
+                </span>
+                    </a>
+                    <div *ngIf="mismodelos" style="justify-content: space-evenly; pointer-events: all;" class="d-flex">
+                        <a target="_blank" style="background-color: var(--primary-color); border-color: var(--primary-color); color:white;" (click)="registrate();" class="btn btn-info"><strong>Editar</strong></a>
+                        <a (click)="eliminarModelo()" class="btn btn-danger"><strong>Eliminar</strong></a>
+                    </div>
+                    <div class="stats">
+                        <button type="button" title="Visualizaciones" class="btn btn-link me-1 noth"><i class="fa-solid fa-eye me-2 "></i>{{NVisitasModelo}}</button>
+                        <button type="button" title="Me gusta" [ngClass]="{'liked': this.liked==true}" (click)="darLikeGuardar('like')" class="btn btn-link me-1">  <i  class="fa-solid fa-heart me-2 "></i>{{NValoracionesModelo}}</button>
+                        <button type="button" title="Guardar" [ngClass]="{'saved': this.saved==true}" (click)="darLikeGuardar('guardar')" class="btn btn-link me-1"><i  class="fa-solid fa-bookmark me-2 "></i>{{NGuardadosModelo}}</button>
+                        <button type="button" *ngIf="bannerPriv=='true'" class="btn btn-link me-1 pb-3" [class]="bannerClass">{{bannerClass}} </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</ng-template>

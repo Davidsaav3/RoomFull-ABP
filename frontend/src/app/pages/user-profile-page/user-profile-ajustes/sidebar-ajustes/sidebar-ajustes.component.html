@@ -1,0 +1,51 @@
+<!--<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto px-0">
+            <div id="sidebar" class="show border-end vh-100 shadow-sm fondoSidebar p-3 d-flex flex-column justify-content-between">
+                <div>
+                    <div class="col-2">
+
+                    <ul class="list-unstyled">
+                        <li class="mt-4">
+                            <h4><a class="link-settings text-decoration-none margin-top text-dark" routerLink="perfil" routerLinkActive="active" ariaCurrentWhenActive="page">Perfil</a></h4>
+                        </li>
+                        <li class="mt-4">
+                            <h4><a class="link-settings text-decoration-none margin-top mt-5" routerLink="seguridad" routerLinkActive="active" ariaCurrentWhenActive="page">Seguridad</a></h4>
+                        </li>
+                        <li class="mt-4">
+                            <h4><a class="link-settings text-decoration-none margin-top mt-5" routerLink="premium" routerLinkActive="active" ariaCurrentWhenActive="page">Premium</a></h4>
+                        </li>
+                        <li class="mt-4">
+                            <label class="switch ml">
+                                <h4>Asistente<input #asistente type="checkbox" id="asistente" checked (change)="cambiarAsistente(asistente.checked)" value={{this.asistente}}></h4>
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+
+                    <p>© 2022 <a href="https://roomfull.ovh/fulloop">FulLoop</a></p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div id="header-admin" class="py-3">
+            <ul class="nav" id="adminList">
+                <li class="m-4 nav-item-profile" style="display: flex; align-items: center;" data-page="perfil">
+                    <a ariaCurrentWhenActive="page" (click)="cambiarRuta('perfil')" routerLinkActive="active" class="link-settings text-decoration-none margin-top text-dark" routerLink="perfil" routerLinkActive="active" ariaCurrentWhenActive="page" >Perfil</a>
+                </li>
+                <li class="m-4 nav-item-profile" style="display: flex; align-items: center;" data-page="seguridad">
+                    <a ariaCurrentWhenActive="page" (click)="cambiarRuta('seguridad')" routerLinkActive="active" class="link-settings text-decoration-none margin-top" routerLink="seguridad" routerLinkActive="active" ariaCurrentWhenActive="page" >Seguridad</a>
+                </li>
+                <li class="m-4 nav-item-profile" style="display: flex; align-items: center;" data-page="premium">
+                    <a ariaCurrentWhenActive="page" (click)="cambiarRuta('premium')" routerLinkActive="active" class="link-settings text-decoration-none margin-top" routerLink="premium" routerLinkActive="active" ariaCurrentWhenActive="page" >Suscripción</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>

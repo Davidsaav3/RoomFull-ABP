@@ -1,0 +1,76 @@
+.breadcrumb {
+    background-color: var(--third-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.breadcrumb-item {
+    color: #000000;
+}
+
+.breadcrumb-link {
+    color: #0073ca;
+    text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+    color: #4d4d4d;
+}
+
+.breadcrumb-item.active {
+    color: #4d4d4d;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right: var(--bs-breadcrumb-item-padding-x);
+    color: var(--bs-breadcrumb-divider-color);
+    content: var(--bs-breadcrumb-divider, ">");
+}
+
+
+/**/
+
+#header-admin {
+    background-color: var(--third-color);
+}
+
+
+/* Css para botones */
+
+.btn {
+    background-color: var(--secondary-color)
+}
+
+
+/* Css para elementos lista */
+
+#adminList>* {
+    margin: 1em 1.5em;
+    font-weight: 570;
+}
+
+.selected {
+    text-decoration: underline;
+    padding-top: 0px;
+    font-weight: 800!important;
+}
+
+.link-settings {
+    color: #000000;
+}
+
+#header-admin>div>ul>li>h4>a {
+    /* margin-left: 2.7em; */
+    /* font-weight: 700; */
+    font-weight: bold;
+}
+
+#header-profile>div>div>h5 {
+    font-weight: 500;
+}
+
+a:hover {
+    color: rgb(89, 89, 89);
+}

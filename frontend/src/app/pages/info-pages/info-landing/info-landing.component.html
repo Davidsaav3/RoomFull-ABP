@@ -1,0 +1,189 @@
+<div id="topdiv">
+    <div class="row justify-content-center align-items-center">
+
+        <div class="cont-1 pt-5">
+            <div class="cont-2 row mt-5 mb-3">
+                <div class="col">
+                    <div class="row h-50 d-flex text-center align-items-center">
+                        <p class="borde">Especializados en showrooms de casas virtuales</p>
+                    </div>
+                    <div class="row h-50">
+                        <div class="col d-flex align-items-center justify-content-center ps-4">
+                            <a routerLink="/" class="btn profile-edit-btn" style="font-size: 1.5em; background-color: rgb(228, 228, 228); color: black;"><strong>Explorar modelos</strong></a>
+                        </div>
+                        <div class="col  d-flex align-items-center justify-content-center">
+                            <a routerLink="https://roomfull.ovh/fulloop" class="btn profile-edit-btn" style="font-size: 1.5em; background-color: rgb(228, 228, 228); color: black;"><strong>Conoce al equipo</strong></a>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col d-flex align-items-center modelito">
+                    <app-engine page="landing" modeloacargar="casa34.gltf" landing="true"></app-engine>
+                </div>
+            </div>
+            <div class="cont-3 row w-100 text-center">
+                <p class="borde fs-4">Sigue bajando y descubre más cosas sobre Roomfull</p>
+                <span id="flechita" (click)="scrollinfo()" class="fa fa-angle-down"></span>
+            </div>
+
+        </div>
+
+        <div id="roomfull" class=" row d-flex flex-row " style="background-color: white;">
+
+            <div style="min-height: 57vh;" class="col-lg-5 col-xl-5 col-md-12 p-5 pt-0 pb-0 margin d-flex justify-content-center flex-column">
+                <h1 class="mb-4 fw-bold">¿Qué es RoomFull?</h1>
+                <p style="text-align:justify;" class="fs-4">RoomFull es una aplicación web en la que los usuarios podrán encontrar y compartir modelos 3D de viviendas. Conformando una comunidad donde los usuarios podrán también valorar y guardar estos modelos, pudiéndose poner en contacto con la
+                    empresa o el arquitecto creador.</p>
+                <div class="d-flex justify-content-center mt-4">
+                    <a routerLink="/" class="btn profile-edit-btn" style="font-size: 1.5em; background-color: rgb(228, 228, 228); color: black;"><strong>Comienza ya a explorar modelos</strong></a>
+                </div>
+
+
+
+            </div>
+            <div class="col-lg-7 col-xl-7 col-md-12 d-flex justify-content-center align-items-center" style="border-radius: 5px;">
+                <a id="link_image1" routerLink="/">
+                    <div style="border-radius: 5px;">
+                        <p>Comienza ya a explorar modelos<span class="mx-2 fas fa-external-link-square-alt"></span></p>
+                    </div>
+                    <img style="border-radius: 5px; width:100%; height:auto; object-fit: cover; " src="../../../../assets/textures/landing.png"></a>
+            </div>
+        </div>
+
+        <div style="min-height:68vh;padding: 6vh 4em 6vh; background-color: rgb(245, 245, 245);">
+            <h1 class=" mb-5 fw-bold ">¿Qué ofrecemos?</h1>
+            <div class="row justify-content-evenly">
+                <div class="col-md-5 col-12 m-2">
+                    <div class="card h-100 " style="background-color: white;">
+                        <div class="card-body">
+                            <div class="w-100 justify-content-center d-flex"><i style="font-size: 3em;" class=" bi bi-box "></i></div>
+                            <h4 class="mt fw-bold text-center mt-3 card-title ">Modelos 3D</h4>
+                            <p class=" my-3 m-5 text-center ">En nuestra web puedes visualizar modelos 3D de casas de una manera sencilla y con una experiencia personalizable. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-12 m-2 ">
+                    <div class="card h-100 " style="background-color: white;">
+                        <div class="card-body">
+                            <div class="w-100 justify-content-center d-flex"><i style="font-size: 3em;" class="bi bi-people"></i></div>
+                            <h4 class="mt fw-bold text-center mt-3 card-title ">Comunidad</h4>
+                            <p class=" my-3 m-5 text-center ">Ofrecemos un espacio web donde multitud de usuarios podrán subir modelos, ver los que han subido otros usuarios y hasta poder hablar con ellos con un chat.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-12 m-2 ">
+                    <div class="card h-100 " style="background-color: white;">
+                        <div class="card-body">
+                            <div class="w-100 justify-content-center d-flex"><i style="font-size: 3em;" class="bi bi-chat-square-heart"></i></div>
+                            <h4 class="mt fw-bold text-center mt-3 card-title ">Interacción</h4>
+                            <p class=" my-3 m-5 text-center ">Valora los modelos subidos, guarda tus modelos favoritos o ponte en contacto con el creador del modelo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-12 m-2 ">
+                    <div class="card h-100 " style="background-color: white;">
+                        <div class="card-body">
+                            <div class="w-100 justify-content-center d-flex"><i style="font-size: 3em;" class="bi bi-incognito"></i></div>
+                            <h4 class="mt fw-bold text-center mt-3 card-title ">Modelos privados</h4>
+                            <p class=" my-3 m-5 text-center ">Envía un enlace a tus clientes de cualquier modelo 3D que quieras privado, pudiendo añadir el logo de tu empresa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="razones">
+            <h1 class="pb-3 fw-bold">¿Por qué elegirnos?</h1>
+
+            <ul class="row justify-content-center pb-5 ms-5 me-5">
+                <li class="col-xs-12 col-sm-12 col-md-4 col-4 col-lg-4 col-xl-5 mb-2">Página de referencia de modelos 3D de viviendas. </li>
+                <li class="col-xs-12 col-sm-12 col-md-4 col-4 col-lg-4 col-xl-5 mb-2">Multitud de modelos 3D diferentes.</li>
+                <li class="col-xs-12 col-sm-12 col-md-4 col-4 col-lg-4 col-xl-5 mb-2">Comunidad de usuarios única.</li>
+                <li class="col-xs-12 col-sm-12 col-md-4 col-4 col-lg-4 col-xl-5 mb-2">Visualización con una experiencia optimizada y personalizada.</li>
+            </ul>
+        </div>
+
+        <div style="min-height:68vh;padding: 6vh 4em 6vh; background-color: rgb(245, 245, 245);">
+            <h1 class=" mb-5"><strong>FAQS</strong></h1>
+
+            <div class="row justify-content-evenly">
+                <div class="col-md-5 col-12 m-2">
+                    <div class="card h-100" style="background-color: white;">
+                        <div class="card-body">
+                            <img class="card-img-top" src="../../../../assets/textures/landing_1.png">
+                            <h4 class="mt fw-bold text-center mt-3 card-title ">¿Gratis?</h4>
+                            <p class=" my-3 m-5 text-center ">Puedes subir 1 modelo de forma gratuita, podrás subir más si obtienes un plan de suscripción.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-12 m-2 ">
+                    <div class="card h-100 " style="background-color: white;">
+                        <div class="card-body">
+                            <img class="card-img-top" src="../../../../assets/textures/landing_2.png">
+                            <h4 class="mt fw-bold text-center mt-3 card-title ">¿Visualizar modelos?</h4>
+                            <p class=" my-3 m-5 text-center ">Visualiza todos los modelos que estén públicos en la web.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-12 m-2 ">
+                    <div class="card h-100 " style="background-color: white;">
+                        <div class="card-body">
+                            <img class="card-img-top" src="../../../../assets/textures/landing_3.png">
+                            <h4 class="mt fw-bold text-center mt-3 card-title ">¿Subir modelos?</h4>
+                            <p class=" my-3 m-5 text-center ">Sube tus propios modelos de forma privada o pública para que otros usuarios puedan valorarlos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-12 m-2 ">
+                    <div class="card h-100 " style="background-color: white;">
+                        <div class="card-body">
+                            <img class="card-img-top" src="../../../../assets/textures/landing_4.png">
+                            <h4 class="mt fw-bold text-center mt-3 card-title ">¿Contacto con usuarios?</h4>
+                            <p class=" my-3 m-5 text-center ">A través del chat puedes ponerte en contacto con otros usuarios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="tipoSus.length!=0" class="cont-5 margin mt-5 mb-0 " style=" background-color: white; ">
+            <h1 class="mt text-center mt-5 fw-bold ">Planes de suscripción</h1>
+            <div style="flex-direction: row; justify-content: center " class=" d-flex align-items-center ">
+                <div class='pricing pricing-palden'>
+                    <div class='pricing-item' *ngFor="let sus of tipoSus, let i=index ">
+                        <div class='pricing-deco'>
+                            <svg class='pricing-deco-img' enable-background='new 0 0 300 100' height='100px' id='Layer_1' preserveAspectRatio='none' version='1.1' viewBox='0 0 300 100' width='300px' x='0px' xml:space='preserve' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'
+                                y='0px'>
+                            <path class='deco-layer deco-layer--1' d='M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729&#x000A; c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z' fill='#FFFFFF' opacity='0.6'></path>
+                            <path class='deco-layer deco-layer--2' d='M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729&#x000A;  c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z' fill='#FFFFFF' opacity='0.6'></path>
+                            <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;  H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
+                            <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A; c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
+                          </svg>
+                            <div class='pricing-price'>{{sus.precio}}<span class='pricing-currency'>€</span>
+                                <span class='pricing-period'>/ mes</span>
+                            </div>
+                            <h3 class='pricing-title'>{{sus.nombre}}</h3>
+                            <p style="color: white; ">{{sus.descripcion}}</p>
+                        </div>
+                        <ul class='pricing-feature-list'>
+                            <li *ngFor="let c of sus.caract, let i=index " class="pricing-feature ">{{c}}</li>
+                        </ul>
+                        <button class='pricing-action'>Elegir plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="p-0 botonarriba">
+            <button type="button" class="" (click)="scrolltop()">
+              <i class="fas fa-arrow-up "></i>
+            </button>
+        </div>
+
+
+    </div>
+</div>

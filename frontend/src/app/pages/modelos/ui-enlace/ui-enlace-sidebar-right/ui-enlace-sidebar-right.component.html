@@ -1,0 +1,235 @@
+<div class="menuR">
+    <div style="height: 8vh;">
+
+    </div>
+    <div style="padding-right:1.5vw ">
+        <div [class]="{'arriba':this.menuState2}" class="dropMenu">
+            <span class="dropItem mt-0">
+            <p (click)="mostrarOcultarSeccion('infoModel');">Información del modelo</p>
+            <button data-op="infoModel" [ngClass]="{'selected' : this.opcionActiva=='infoModel'}" (click)="mostrarOcultarSeccion('infoModel');" type="button"><i class="fa fa-info"></i></button>
+          </span>
+
+            <span class="dropItem">
+            <p (click)="mostrarOcultarSeccion('settingVisual');">Opciones visualización</p>
+            <button data-op="settingVisual" [ngClass]="{'selected' : this.opcionActiva=='settingVisual'}" (click)="mostrarOcultarSeccion('settingVisual');" type="button"><i class="fas fa-paint-brush"></i></button>
+          </span>
+
+            <span class="dropItem">
+            <p (click)="mostrarOcultarSeccion('settingVista');">Recorrido virtual</p>
+            <button data-op="settingVista" [ngClass]="{'selected' : this.opcionActiva=='settingVista'}" (click)="mostrarOcultarSeccion('settingVista');" type="button"><i class="fas fa-eye"></i></button>
+        </span>
+
+            <span class="dropItem">
+            <p (click)="descargarPdf();">Generar PDF</p>
+            <button (click)="descargarPdf();" data-op="pdf" [ngClass]="{'selected' : this.opcionActiva=='pdf'}" type="button">
+              <i class="fa fa-download"></i></button>
+          </span>
+            <!--<span class="dropItem">
+            <p (click)="mostrarOcultarSeccion('settingUi');">Ajustes de interfaz</p>
+            <button data-op="settingUi" [ngClass]="{'selected' : this.opcionActiva=='settingUi'}" (click)="mostrarOcultarSeccion('settingUi');" type="button"><i class="fa fa-gear"></i></button>
+          </span>
+            <span class="dropItem">
+            <p (click)="mostrarOcultarSeccion('hWorks');">Cómo funciona</p>
+            <button data-op="hWorks" [ngClass]="{'selected' : this.opcionActiva=='hWorks'}" (click)="mostrarOcultarSeccion('hWorks');" type="button"><i class="fa fa-question"></i></button>
+          </span>-->
+
+        </div>
+    </div>
+</div>
+
+<div [class]="{'ocultao':this.menuState2}" class="optionsCont">
+
+    <div *ngIf="this.opcionActiva=='settingVisual'" id="settingVisual" class="dropWindow">
+        <div style="background-color: none!important;"><button type="button" (click)="cerrarVentana()" class="closeB"><i class="fa fa-close flex" style="font-size: 0.7em;"></i></button></div>
+
+        <div class="optionNav mt-2">
+            <span [class]="{'opened': stateNavOptions=='momentoD'}" class="optionNavItem" (click)="cambiarStateNavOptions('momentoD');">Iluminación</span>
+            <span [class]="{'opened': stateNavOptions=='fondo'}" class="optionNavItem" (click)="cambiarStateNavOptions('fondo');">Fondo</span>
+            <!--<span [class]="{'opened': stateNavOptions=='meteo'}" class="optionNavItem" (click)="cambiarStateNavOptions('meteo');">Ambiente</span>
+            <span [class]="{'opened': stateNavOptions=='camara'}" class="optionNavItem " (click)="cambiarStateNavOptions('camara');">Cámara</span>-->
+        </div>
+
+        <div class="optionContainer">
+            <div class="optionDiv">
+                <div [class]="{'visible': stateNavOptions=='camara', 'invisible':stateNavOptions!='camara' }">
+                    <div class="form-check form-switch textDropWindow d-flex" style="align-items: center;">
+                        <label class="form-check-label mt-3" for="flexSwitchCheckAutoRotate">Rotación automática de la cámara </label>
+                        <input class="form-check-input d-flex" style="align-items: center;" (click)="cambiarAutorrotate()" type="checkbox" id="flexSwitchCheckAutoRotate" [checked]="autoRotate">
+                    </div>
+                </div>
+                <div [class]="{'visible': stateNavOptions=='fondo', 'invisible':stateNavOptions!='fondo'}" class="form-check form-switch textDropWindow">
+                    <div class="fondosContainer">
+                        <div class="recuadro m-1" (click)="cambiarFondo(0)"><img src="..\..\..\assets\textures\fotoPlaya.jpg" alt="">
+                            <p>Playa</p>
+                        </div>
+                        <div class="recuadro m-1" (click)="cambiarFondo(1)"><img src="..\..\..\assets\textures\fotoCampo.jpg" alt="">
+                            <p>Campo</p>
+                        </div>
+                    </div>
+                    <div class="fondosContainer">
+                        <div class="recuadro m-1" (click)="cambiarFondo(2)"><img src="..\..\..\assets\textures\fotoDespejado.jpg" alt="">
+                            <p>Despejado</p>
+                        </div>
+                        <div class="recuadro m-1" (click)="cambiarFondo(3)"><img src="..\..\..\assets\textures\fotoNocheNubes.jpg" alt="">
+                            <p>Noche con nubes</p>
+                        </div>
+                    </div>
+                </div>
+                <div [class]="{'visible': stateNavOptions=='momentoD', 'invisible':stateNavOptions!='momentoD' }" class="form-check form-switch textDropWindow">
+                    <div class="fondosContainer">
+                        <div class="recuadro m-1" (click)="cambiarColor(0)"><i class="bi bi-brightness-alt-high-fill" style="font-size: larger;"></i>
+                            <p>Amanecer</p>
+                        </div>
+                        <div class="recuadro m-1" (click)="cambiarColor(1)"><i class="bi bi-sun-fill" style="font-size: large;"></i>
+                            <p>Medio dia</p>
+                        </div>
+                        <div class="recuadro m-1" (click)="cambiarColor(2)"><i class="bi bi-brightness-alt-low-fill" style="font-size: larger;"></i>
+                            <p>Atardecer</p>
+                        </div>
+                        <div class="recuadro m-1" (click)="cambiarColor(3)"><i class="bi bi-moon-fill" style="font-size: large;"></i>
+                            <p>Noche</p>
+                        </div>
+                    </div>
+                </div>
+                <div [class]="{'visible': stateNavOptions=='meteo', 'invisible':stateNavOptions!='meteo' }" class="form-check form-switch textDropWindow">
+                    <div class="fondosContainer">
+                        <div class="recuadro m-1"><i class="bi bi-sun-fill" style="font-size: larger;"></i>
+                            <p>Soleado</p>
+                        </div>
+                        <div class="recuadro m-1"><i class="bi bi-cloud-fill" style="font-size: large;"></i>
+                            <p>Nublado</p>
+                        </div>
+                        <div class="recuadro m-1"><i class="bi bi-cloud-drizzle-fill" style="font-size: larger;"></i>
+                            <p>Lluvioso</p>
+                        </div>
+                        <div class="recuadro m-1"><i class="bi bi-cloud-lightning-fill" style="font-size: large;"></i>
+                            <p>Tormentoso</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="this.opcionActiva=='settingVista'" id="settingVista" class="dropWindow">
+        <div style="justify-content: space-between;">
+            <h4 class="mt-3 ms-3"><strong>Puntos de vista</strong></h4>
+            <button type="button" (click)="cerrarVentana()" class="closeB"><i class="fa fa-close flex" style="font-size: 0.7em;"></i></button>
+        </div>
+        <div class="">
+            <div style="display: flex; justify-content: space-evenly;">
+                <div *ngIf="modeloPropio" class="col-6 p-3"><button type="button" style="background-color: rgb(228, 228, 228); color: black; border: 0.1rem solid #dbdbdb; width: 100%;" class="btn btn-dark"><strong>Añadir punto</strong></button></div>
+                <div class="col-6 p-3 ps-0"><button type="button" style="background-color: rgb(228, 228, 228); color: black; border: 0.1rem solid #dbdbdb; width: 100%;" class="btn btn-dark" (click)="iniciarDetenerRecorrido()"><strong *ngIf="!recorrido"><i class="me-1 bi bi-play-fill"></i> Iniciar recorrido</strong><strong *ngIf="recorrido"><i class="me-1 bi bi-pause-fill"></i> Detener recorrido</strong></button></div>
+            </div>
+
+        </div>
+        <div class="row p-3 m-0">
+            <p class="m-0 ps-0 pb-1"><strong>Lista de puntos de vista</strong></p>
+
+            <!-- Input nombre -->
+
+            <div *ngFor="let item of puntos, index as i;" class="col-12 d-flex p-0 mb-1" style="background-color: rgb(242, 242, 242); color: black; border: 0.1rem solid #ebebeb; border-radius: 3px;" (click)="iralPunto(i)">
+                <div class="m-3 my-1">
+                    <div><i class="bi bi-caret-up-fill"></i></div>
+                    <div><i class="bi bi-caret-down-fill"></i></div>
+                </div>
+                <div class="m-3 my-1 col-7" style="display: flex; align-items: center;">
+                    <!-- <p class="m-0"><strong>{{item['nombre']}}</strong></p> -->
+
+                    <div class="m-0" *ngIf="modeloPropio">
+                        <label for="inputNombrePunto{{i}}"></label>
+                        <input class="inputStyle" type="text" formControlName="nombre" id="inputNombrePunto{{i}}" placeholder="{{item['nombre']}}">
+                    </div>
+
+                    <div class="m-0" *ngIf="!modeloPropio">
+                        <label for="inputNombrePunto{{i}}"></label>
+                        <input class="inputStyle" readonly type="text" formControlName="nombre" id="inputNombrePunto{{i}}" placeholder="{{item['nombre']}}">
+                    </div>
+
+                    <div *ngIf="modeloPropio" style="display: flex; align-items: center;">
+
+                        <button type="button" class="ms-2 table-link btn border-0 px-0 py-0">
+                      <span class="fa-stack ">
+                        <i class="fa fa-square fa-stack-2x"></i>
+                        <i class="fa fa fa-check fa-stack-1x fa-inverse"></i>
+                      </span>
+                      </button>
+
+                        <button type="button" class="ms-2 table-link btn border-0 px-0 py-0">
+                        <span class="fa-stack ">
+                          <i class="fa fa-square fa-stack-2x"></i>
+                          <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--  <div class="col-12 d-flex p-0 mb-1" style="background-color: rgb(242, 242, 242); color: black; border: 0.1rem solid #ebebeb; border-radius: 3px;">
+                <div class="m-3 my-1">
+                    <div><i class="bi bi-caret-up-fill"></i></div>
+                    <div><i class="bi bi-caret-down-fill"></i></div>
+                </div>
+                <div class="m-3 my-1 col-7" style="display: flex; align-items: center;">
+                    <p class="m-0"><strong>Punto 2</strong></p>
+                </div>
+                <div class="m-3 my-1" style="display: flex; align-items: center;">
+                    <button type="button" (click)="MostrarModalEliminar()" class="table-link btn border-0 px-0 py-0">
+                        <span class="fa-stack ">
+                          <i class="fa fa-square fa-stack-2x"></i>
+                          <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <div *ngIf="this.opcionActiva=='infoModel'" id="infoModel" class="dropWindow">
+        <div style="justify-content: space-between;">
+            <h4 class="mt-3 ms-3"><strong>{{this.titulo}}</strong></h4>
+            <button type="button" (click)="cerrarVentana()" class="closeB"><i class="fa fa-close flex" style="font-size: 0.7em;"></i></button>
+        </div>
+        <div class="textDropWindow mt-2">
+            <div style="pointer-events: all;">
+                <span><img style="height: 20px; width: 20px; border-radius: 100%;" class="" src={{this.imagenUsu}}> <a routerLink="/user/modelo/{{this.usuario2}}" target="_blank" class="h5 text-dark mb-0 link-dark" style="text-decoration:none; cursor: pointer; font-size: 20px;"> {{this.usuario}}</a></span>
+            </div>
+            <div>
+                <img src="../../../../assets/uploads/imagenEscena/{{this.imagen}}" class="py-2" alt="" width="100%">
+            </div>
+            <div class="">
+                <div *ngIf="this.uidDuenyo == this.miId" _ngcontent-vgn-c76="" class="d-flex mt-2" style="justify-content: space-between;">
+                    <div>
+                        <a _ngcontent-vgn-c76="" target="_blank" class="btn btn-info" style="background-color: var(--primary-color); border-color: var(--primary-color); color: white;" ng-reflect-target="_blank" ng-reflect-router-link="/editar-modelo/641218b82749b4c" href="/editar-modelo/641218b82749b4ca22b3be48"
+                            _ngcontent-vgn-c76="">Editar</a>
+                        <a _ngcontent-vgn-c76="" (click)="eliminarModelo()" class="btn btn-danger ms-1" _ngcontent-vgn-c76="" style=" color: white;">Eliminar</a>
+                    </div>
+                    <div>
+                        <p class="m-0 mt-1">{{this.fechastr}}</p>
+                    </div>
+                </div>
+                <p class="mt-3">{{this.descripcion}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="this.opcionActiva=='settingUi'" id="settingUi" class="dropWindow">
+        <div style="justify-content: space-between;">
+            <h4 class="mt-3 ms-3"><strong>Ajustes</strong></h4>
+            <button type="button" (click)="cerrarVentana()" class="closeB"><i class="fa fa-close flex" style="font-size: 0.7em;"></i></button>
+        </div>
+        <div class="textDropWindow mt-4" style="flex-direction: column;">
+            <div class="form-check form-switch textDropWindow d-flex p-0" style="align-items: center;">
+                <label class="form-check-label" for="flexSwitchCheckAutoRotate">Rotación de la cámara </label>
+                <input class="form-check-input d-flex" style="align-items: center;" (click)="cambiarAutorrotate()" type="checkbox" id="flexSwitchCheckAutoRotate" [checked]="autoRotate">
+            </div>
+            <div class="form-check form-switch textDropWindow d-flex p-0" style="align-items: center;">
+                <label class="form-check-label mt-3" for="flexSwitchCheckAutoRotate">Ocultar interfaz</label>
+                <input class="form-check-input d-flex" style="align-items: center;" type="checkbox" id="flexSwitchCheck" [checked]="">
+            </div>
+        </div>
+    </div>
+
+</div>

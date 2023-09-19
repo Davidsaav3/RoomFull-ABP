@@ -1,0 +1,13 @@
+#sidebar {
+  width:20%;
+  float:left;
+  padding-right:1px;
+  border-right: 1px, solid;
+}
+
+
+#chat {
+  width:80%;
+  float:right;
+  padding:0;
+}

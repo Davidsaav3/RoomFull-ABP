@@ -1,0 +1,36 @@
+<div id="tarjeta">
+
+
+  <div class="d-flex justify-content-between">
+    <div class="ms-4">
+      <h1 >{{ nombre }}</h1>
+      <!-- <h1>{{ valor | currency}}</h1> -->
+      <h1>{{ valor }} €</h1>
+    </div>
+    <div class="me-2">
+      <button _ngcontent-hvl-c68="" class="btn text-white btn m-0 py-0" style="height: 40px; background-color: var(--secondary-color);" (click)="volver()">Volver</button>
+    </div>
+  </div>
+
+    <div id="primera">
+        <section id="caract">
+            <h2>Características</h2>
+            <div *ngFor="let c of lista">
+              {{c}}
+            </div>
+            <hr>
+
+        </section>
+    </div>
+    <hr>
+    <div id="segunda">
+        <ngx-paypal [config]="payPalConfig" *ngIf="coste"></ngx-paypal>
+        <div *ngIf="!coste">
+            <a aria-label="Acceso a registro de usuario." [routerLink]="['/registro']" style="text-decoration: none;">
+                <div>
+                    <strong>REGISTRO</strong>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<section id="content" data-page="saves" class="modelos p-4" style="min-height: 400px;">
+
+    <div *ngIf="this.cantidadReal > 0; then ifModelosTotal; else ifNoModelosTotal"></div>
+    <ng-template #ifModelosTotal>
+
+        <div id="busqueda">
+            <div id="busquedaCabecera">
+                <div id="busquedaCabeceraDiv">
+                    <div>
+                        <h4 class="fw-bold pt-3"><strong>{{numGuardados}} Modelos guardados</strong></h4>
+                    </div>
+                    <div>
+                        <input type="text" id="buscador" placeholder="Buscar" style="position: relative; height: 40px; margin-top: 10px;" (keyup)="onKeySearch($event)">
+                        <i class="fa-solid fa-magnifying-glass" style="position: absolute; z-index: 100; margin-left: -35px; margin-top: 20px;"></i>
+                    </div>
+                    <div id="botonesBusqueda" style="padding-top: 10px;">
+                        <button id="ocultarFiltros" (click)="filtros()">
+                  <span id="ocultar" style="display: unset;">
+                    Ocultar Ordenar por
+                    <i class="bi bi-filter-circle-fill" style="margin: 10px;"></i>
+                  </span>
+                  <i class="fa-regular fa-filter-slash"></i>
+                  <span id="mostrar" style="display: none;">
+                    Mostrar Ordenar por
+                    <i class="bi bi-filter-circle" style="margin: 10px;"></i>
+                  </span>
+                </button>
+                        <!--<button id="ordenar">
+                <span>
+                    Ordenar Por
+                    <i class=" fas fa-sort " style="margin: 10px;"></i>
+                </span>
+              </button>-->
+                        <div id="modalOrdenar">
+                            <div style="border-bottom: solid 1px #a1a1a1;" (click)="ordenar(1);">
+                                <span>Más recientes</span>
+                                <i class="bi bi-sort-numeric-up-alt"></i>
+                            </div>
+                            <div style="border-bottom: solid 1px #a1a1a1;" (click)="ordenar(2);">
+                                <span>Más antiguos</span>
+                                <i class="bi bi-sort-numeric-down-alt"></i>
+                            </div>
+                            <div style="border-bottom: solid 1px #a1a1a1;" (click)="ordenar(3);">
+                                <span>Más visitas</span>
+                                <i class="bi bi-sort-down"></i>
+                            </div>
+                            <div style="border-bottom: solid 1px #a1a1a1;" (click)="ordenar(4);">
+                                <span>Menos visitas</span>
+                                <i class="bi bi-sort-up"></i>
+                            </div>
+                            <div (click)="ordenar(5);">
+                                <span>Popularidad</span>
+                                <i class="bi bi-bookmark-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+                <div *ngIf="this.cantidadModelos > 0; then ifModelos; else NoModelos;"></div>
+                <ng-template #ifModelos>
+                  <div id="busquedaBody">
+
+                    <div id="resultados">
+                        <!-- Tarjetas -->
+                        <div class="tarjetas"  id="{{escena.uid}}" *ngFor="let escena of modelosUsuario, index as i" style="display: flex; justify-content: center;">
+                            <app-tarjeta-modelo-index [mismodelos]="escena.creadorID == this.uid" class="tarjeta-modelo" uidModelo={{escena.uid}}></app-tarjeta-modelo-index>
+                        </div>
+                    </div>
+                    <div id="filtros" class="mt-0">
+                        <div class="pb-3" style="border-bottom: solid 1px #a1a1a1; cursor: pointer;" (click)="ordenar(1);">
+                            <h5 class="m-0"><i class="bi bi-caret-up-fill"></i> Más recientes</h5>
+                        </div>
+                        <div class="py-3" style="border-bottom: solid 1px #a1a1a1; cursor: pointer;" (click)="ordenar(2);">
+                            <h5 class="m-0"><i class="bi bi-caret-down-fill"></i> Más antiguos</h5>
+                        </div>
+                        <div class="py-3" style="border-bottom: solid 1px #a1a1a1; cursor: pointer;" (click)="ordenar(3);">
+                            <h5 class="m-0"><i class="bi bi-eye-fill"></i> Más visitas</h5>
+                        </div>
+                        <div class="py-3" style="border-bottom: solid 1px #a1a1a1; cursor: pointer;" (click)="ordenar(4);">
+                            <h5 class="m-0"><i class="bi bi-eye-slash-fill"></i> Menos visitas</h5>
+                        </div>
+                        <div class="py-3" style=" cursor: pointer;" (click)="ordenar(5);">
+                            <h5 class="m-0"><i class="bi bi-bookmark-fill"></i> Popularidad
+                            </h5>
+                        </div>
+                    </div>
+
+                    </div>
+
+                            <div class="paginador mt-5 d-flex justify-content-center">
+          <nav class="pagination-outer " aria-label="Page navigation">
+              <ul class="pagination">
+                  <li class="page-item">
+                      <button type='button' class='btn btn-default' [disabled]="primero" (click)='menos()'>«</button>
+                  </li>
+                  <li class="page-item">
+                      <button type='button' class='btn btn-default page' *ngFor="let p of paginas" (click)='pagina(p)'>{{p+1}}</button>
+                  </li>
+                  <li class="page-item">
+                      <button type='button' class='btn btn-default' [disabled]="ultimo" (click)='mas()'>»</button>
+                  </li>
+              </ul>
+          </nav>
+      </div>
+
+                </ng-template>
+                <ng-template #NoModelos>
+                    <div id="resultados">
+                        <p class="h5">{{mensajeErrorCantidad}}</p>
+                    </div>
+                </ng-template>
+            </div>
+
+    </ng-template>
+
+    <ng-template #ifNoModelosTotal>
+        <p class="h5 ">No has guardado ningún modelo</p>
+    </ng-template>
+
+</section>

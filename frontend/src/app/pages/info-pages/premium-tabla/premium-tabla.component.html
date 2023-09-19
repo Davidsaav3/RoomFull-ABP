@@ -1,0 +1,75 @@
+<div id="body">
+
+    <div *ngIf="this.estaRegistrado === true; then registro; else noRegistro"></div>
+    <ng-template #registro>
+      <section id="primerPlano">
+        <h1><strong>Mejora tu suscripción</strong></h1>
+        <span>
+            Comprueba las increíbles ventajas del resto de suscripciones.
+        </span>
+        <div id="botones">
+            <div>
+                <a aria-label="Mostrar planes disponibles." (click)="scroll(planes)" style="text-decoration: none;">
+                    <div>
+                        <strong>VER PLANES</strong>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    </ng-template>
+    <ng-template #noRegistro>
+      <section id="primerPlano">
+        <h1><strong>Empieza ahora gratis</strong></h1>
+        <span>
+            Con solo registrarte ya dispondrás de un plan gratuito con el que comenzar.
+        </span>
+        <div id="botones">
+            <div>
+                <a aria-label="Acceso a registro de usuario." [routerLink]="['/registro']" style="text-decoration: none;">
+                    <div>
+                        <strong>REGISTRO</strong>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a aria-label="Mostrar planes disponibles." (click)="scroll(planes)" style="text-decoration: none;">
+                    <div>
+                        <strong>VER PLANES</strong>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    </ng-template>
+
+    <section id="info">
+        <h1>
+            ¿Por qué mejorar tu suscripción?
+        </h1>
+        <div>
+            <div>
+                <i class="bi bi-box-fill"></i>
+                <span>Publicar más modelos</span>
+            </div>
+            <div>
+                <i class="bi bi-brightness-high-fill"></i>
+                <span>Más opciones para personalizar modelos</span>
+            </div>
+            <div>
+                <i class="bi bi-arrows-angle-contract"></i>
+                <span>Más ajustes de visualización</span>
+            </div>
+        </div>
+    </section>
+    <section id="planes">
+        <h1 #planes>
+            Planes disponibles
+        </h1>
+        <div id="resultados" class="container">
+            <div class="planesDisponibles" *ngFor="let plan of planesDisponibles">
+                <app-tarjeta-planes uidPlan={{plan.uid}} class="tarjetaPlanes"></app-tarjeta-planes>
+            </div>
+        </div>
+    </section>
+</div>

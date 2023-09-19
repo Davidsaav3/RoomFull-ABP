@@ -1,0 +1,18 @@
+#searchBarForm {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 12vh;
+}
+
+#searchBarForm>div {
+    width: 60%;
+}
+
+#searchBarForm>div>div>a {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

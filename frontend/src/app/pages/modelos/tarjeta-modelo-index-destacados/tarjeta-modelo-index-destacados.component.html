@@ -1,0 +1,33 @@
+<div class="card tarjetaModelo">
+    <article style="position: relative;">
+
+      <div *ngIf="this.hayToken === true; then ifUsu; else ifNoUsu"></div>
+      <ng-template #ifUsu>
+        <a routerLink="/modelo/{{uidModelo}}" target="_blank">
+          <img src="../../../../assets/uploads/imagenEscena/{{imagenPrevisualizacion}}" alt="{{tituloModelo}}">
+
+
+          <div style="padding:right; position: absolute; bottom: 8px; width: 100%;">
+            <a routerLink="/modelo/{{uidModelo}}" target="_blank" class="p-0">
+                <span class="titulo ps-4">{{tituloModelo}}</span>
+            </a>
+          </div>
+
+        </a>
+      </ng-template>
+
+      <ng-template #ifNoUsu>
+        <a (click)="registrate();">
+          <img src="../../../../assets/uploads/imagenEscena/{{imagenPrevisualizacion}}" alt="{{tituloModelo}}">
+
+          <div style="padding:right; position: absolute; bottom: 8px; width: 100%; ">
+            <a (click)="registrate();" class="p-0"></a>
+                <span class="titulo ps-4">{{tituloModelo}}</span>
+          </div>
+
+        </a>
+      </ng-template>
+
+
+    </article>
+</div>

@@ -1,0 +1,42 @@
+#header-admin {
+    background-color: var(--third-color);
+}
+
+
+/* Css para botones */
+
+.btn {
+    background-color: var(--secondary-color)
+}
+
+
+/* Css para elementos lista */
+
+#adminList>* {
+    margin: 1em 1.5em;
+    font-weight: 570;
+}
+
+.selected {
+    text-decoration: underline;
+    padding-top: 0px;
+    font-weight: 800!important;
+}
+
+.link-settings {
+    color: #000000;
+}
+
+#header-admin>div>ul>li>h4>a {
+    /* margin-left: 2.7em; */
+    /* font-weight: 700; */
+    font-weight: bold;
+}
+
+#header-profile>div>div>h5 {
+    font-weight: 500;
+}
+
+a:hover {
+    color: rgb(89, 89, 89);
+}

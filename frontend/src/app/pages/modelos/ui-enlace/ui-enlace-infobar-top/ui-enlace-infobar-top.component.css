@@ -1,0 +1,131 @@
+h1,
+h2,
+h3,
+h4,
+p,
+a {
+    color: rgb(25, 25, 27);
+}
+
+.uiTop {
+    background-color: rgba(255, 255, 255, 0.4);
+    margin: 1em;
+    border-radius: 15px;
+    padding: 13px;
+}
+
+.botonMenu {
+    pointer-events: all;
+    border-radius: 100%;
+    background-color: rgb(7, 7, 7);
+    font-size: 1.3em;
+    color: papayawhip;
+    width: 6vh;
+    height: 6vh;
+    transition: 0.1s all;
+}
+
+.botonMenu:hover {
+    background-color: rgb(0, 0, 0);
+    /*  font-size: 2em; */
+    box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.abiertoM {
+    transform: rotate(180deg);
+}
+
+
+/* !!!!!!!! MENSAJE MODAL !!!!!!!!! */
+.rounded-25 {
+    border-radius: 25px;
+}
+
+.bg-gris-claro{
+    background-color: var(--third-color);
+}
+
+.ModalContainer {
+    position: absolute;
+    top: 0px;
+    width: 110%;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.651);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+.mensajemodal {
+    width: max-content;
+}
+
+.mensajemodal>div {
+    width: max-content;
+}
+
+
+/* ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ MENSAJE MODAL ¡¡¡¡¡¡¡¡¡¡¡ */
+
+#header-profile {
+    padding: 10px 0 30px;
+    background-color: rgb(245, 245, 245);
+}
+
+.profile-pic {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+#header-profile>div:nth-child(1) {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; */
+}
+
+#header-profile>div:nth-child(1)>a {
+    height: fit-content;
+}
+
+#header-profile>div>div>ul>li {
+    font-weight: bold;
+}
+
+
+/* Css para botones */
+
+.btn {
+    background-color: var(black)
+}
+
+
+/* Css para elementos lista */
+
+#header-profile>div>div>ul>li>a:link {
+    color: #000;
+}
+
+#header-profile>div>div>ul>li>a:visited {
+    color: #000;
+}
+
+
+.selected> button {
+    border: #424242 2px solid;
+    outline: 0.5rem auto #4d90fe;
+}
+
+.link-settings {
+    color: #000000;
+}
+
+@media only screen and (max-width: 640px) {
+    .ver{
+        display:block;
+    }
+}
+
+

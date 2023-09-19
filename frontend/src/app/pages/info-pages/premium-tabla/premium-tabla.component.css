@@ -1,0 +1,153 @@
+#body {
+    text-decoration: none !important;
+}
+
+#primerPlano {
+    background-color: rgb(240, 240, 240);
+    height: 47vh;
+    padding: 18vh 20% 12vh 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+#primerPlano>#botones {
+    max-height: 5vh;
+    margin-top: 5vh;
+    display: flex;
+}
+
+#primerPlano>#botones>div:first-child>a>div {
+    border-radius: 30px;
+    background-color: black;
+    color: #ffffff;
+    height: 5vh;
+    width: 16vh;
+    margin: 10px;
+    transition-duration: 0.1s;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#primerPlano>#botones>div:last-child>a>div {
+    border-radius: 30px;
+    color: black;
+    background-color: rgb(195, 195, 195);
+    height: 5vh;
+    width: 16vh;
+    margin: 10px;
+    transition-duration: 0.1s;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#primerPlano>#botones>div:last-child>a>div:hover {
+    background-color: rgb(176, 176, 176);
+    ;
+    transform: scale(1.05);
+}
+
+#primerPlano>#botones>div:first-child>a>div:hover {
+    transform: scale(1.05);
+}
+
+#info {
+    background-color: rgb(255, 255, 255);
+    padding: 7vh 20% 5vh 20%;
+    text-align: center;
+}
+
+#info>h1 {
+    text-align: center;
+}
+
+#planes {
+    background-color: rgb(240, 240, 240);
+    height: fit-content;
+    padding-bottom: 5vh;
+}
+
+#planes>h1 {
+    text-align: center;
+    padding-top: 5vh;
+}
+
+#resultados {
+    margin-top: 5vh;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    width: 80%;
+    transition-duration: 1s;
+    height: 70vh;
+}
+
+.planesDisponibles {
+    height: 50vh;
+    margin-bottom: 20px;
+}
+
+.tarjetaPlanes {
+    width: 100%;
+}
+
+#info>div {
+    display: inline-flex;
+    width: 100%;
+}
+
+#info>div>div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 200px;
+}
+
+#info>div>div>i {
+    padding: 10px;
+    font-size: 80px;
+}
+
+#info>div>div>span {
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+    #primerPlano {
+        padding: 10vh 20% 12vh 20%;
+    }
+    #info>div {
+        display: unset;
+        text-align: -webkit-center;
+    }
+    #info>div>div {
+        margin: unset;
+    }
+    #resultados {
+        display: unset;
+    }
+    .planesDisponibles {
+        margin-bottom: 120px;
+        text-align: -webkit-center;
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+    #resultados {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        grid-gap: 30px;
+        height: auto;
+    }
+    .planesDisponibles {
+        margin-bottom: 120px;
+        text-align: -webkit-center;
+    }
+}

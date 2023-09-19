@@ -1,0 +1,64 @@
+<div class="d-flex flex-wrap">
+    <div style="width: 35%; background-color: rgb(245, 245, 245);">
+        <form (ngSubmit)="subirModelo()" [formGroup]="subirModelForm" id="subirModelForm" class="row g-3 m-5">
+            <div class="d-flex">
+                <h3 style="margin: 0px 20px 0px 0px;"><strong>Editar modelo</strong></h3>
+                <span *ngIf="cambiosSinGuardar" style="background-color:rgb(213, 0, 0); color:white; padding:10px; border-radius: 25px;"> Cambios sin guardar</span>
+            </div>
+            <div class="form-floating col-12">
+                <input type="text" class="form-control " formControlName="title" id="inputtitle" (change)="cambiadatos(); cambioCheckForm();">
+                <label for="inputtitle" class="floatingInput">Título del modelo</label>
+                <div class="invalid-feedback">
+                    Este campo no debe estar vacío.
+                </div>
+            </div>
+            <div class="form-floating col-12 my-4">
+                <textarea class="form-control" formControlName="description" id="inputdescription" placeholder="Descripción" (change)="cambiadatos(); cambioCheckForm();" style="height: 100px"></textarea>
+                <label for="inputdescription" class="floatingInput">Descripción del modelo</label>
+                <div class="invalid-feedback">
+                    Este campo no debe estar vacío.
+                </div>
+            </div>
+
+
+            <div style="justify-content: space-between;" class="col-12 d-flex m-0">
+                <div class="">
+                    <input type="file" accept="image/*" style="display:none;" id="inputimage" class="form-control" formControlName="image" (change)="cargararchivo($event); cambioCheckForm();" #fileUpload>
+                    <button type="button" class="btn btn2 text-white" (click)="fileUpload.click()">Selecciona imagen de portada</button>
+                    <div class="invalid-feedback">
+                        Debes seleccionar una imagen.
+                    </div>
+                    <p class="mt-1">{{imageName || "No se ha subido ningún archivo"}}</p>
+                </div>
+                <div class="ms-2">
+                    <img id="output" class='mx-auto' src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" style="width:fit-content;height:130px ;" />
+                </div>
+            </div>
+
+            <div style="justify-content: space-between;" class="col-12 d-flex p-0 m-0 mt-3 px-2">
+                <div style="flex-direction: column;" class="d-flex">
+                    <input type="file" style="display:none;" accept=".gltf" class="form-control" id="inputmodel" formControlName="model" (change)="cargarmodelo($event);  cambioCheckForm();" #modelUpload>
+                    <button type="button" class="btn btn2 text-white" (click)="modelUpload.click()">Selecciona modelo</button>
+                    <div class="invalid-feedback">
+                        Debes seleccionar un modelo.
+                    </div>
+                    <p class="mt-1">{{fileName || "No se ha subido ningún archivo"}}</p>
+                </div>
+                <div class="ms-2 form-check form-switch">
+                    <label class="form-check-label" style="font-size:1.4em; margin-left:10px" for="flexSwitchCheckChecked">Modelo público</label>
+                    <input class="form-check-input form-control" style="width:3.4em; height:1.7em;" formControlName="public" type="checkbox" id="flexSwitchCheckChecked" (change)="cambiadatos();">
+                </div>
+            </div>
+
+            <div class="col-12 mt-3">
+                <button style='background-color: var(--primary-color);' [disabled]="!cambiosSinGuardar" type="submit" class="btn btn-primary"><strong>Guardar cambios</strong></button>
+            </div>
+        </form>
+
+
+    </div>
+    <div style="min-width:20em ;width: 65%; overflow: hidden;">
+      <app-engine2 page="subirM" modeloacargar={{idEscena}}></app-engine2>
+      <!-- <app-engine page="subirM" modeloacargar={{fileName}}></app-engine> -->
+    </div>
+</div>

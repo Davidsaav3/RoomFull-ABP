@@ -1,0 +1,11 @@
+<div class="cookie-notice hide" *ngIf="!cookiesAccepted">
+  <div class="cookie-notice-message">
+    <p>El sitio web RoomFull.ovh utiliza cookies propias y de terceros para recopilar información que ayuda a optimizar su visita a sus páginas web. No se utilizarán las cookies para recoger información de carácter personal. Usted puede permitir su uso o rechazarlo, también puede cambiar su configuración siempre que lo desee. Encontrará más información en nuestra <a routerLink="/cookies">Política de Cookies</a>.</p>
+  </div>
+  <div class="cookie-notice-actions">
+    <button class="cookie-notice-button cookie-notice-accept" (click)="acceptCookies()">Aceptar</button>
+    <button class="cookie-notice-button cookie-notice-reject" (click)="rejectCookies()">Rechazar</button>
+  </div>
+</div>
+
+

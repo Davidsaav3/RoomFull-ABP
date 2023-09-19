@@ -1,0 +1,213 @@
+<section class="container-fluid bg-gris-claro">
+    <div class="row" style="align-items: center; height: 89vh; justify-content: center;">
+        <div class="col-sm-9 col-md-7 col-lg-5" >
+
+            <form id="registerform" (ngSubmit)="register()" [formGroup]="registerForm">
+
+                <div class="card-body p-5 card rounded-25" id="r0">
+                    <h3><strong>Registro</strong></h3>
+
+                    <div class="d-flex form-group pt-2" >
+                        <div class="pe-1">
+                          <button (click)="r1()" id="botonRegistro" style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" [disabled]="waiting"><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Registrarse con correo</button>
+
+                          <div *ngIf="this.registroPasosIniciado === true; then ifRegistroInicio;"></div>
+                          <ng-template #ifRegistroInicio>
+                            <div (click)="r1()" style="background-color: var(--primary-color);" class="btn btn-primary fw-bold"><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Continuar el registro</div>
+                          </ng-template>
+
+                        </div>
+                        <div class="ps-1">
+                            <div id="buttonDiv" class="rounded-25"></div>
+                        </div>
+                    </div>
+
+                    <!-- Separador -->
+                    <div class="divider d-flex align-items-center my-4"></div>
+
+                    <h3><strong>Inicio de sesión</strong></h3>
+                    <p class="pt-2 m-0"><a routerLink="/login" style="color: black; text-decoration: none;"><strong>Inicia sesión</strong></a> si ya tienes cuenta</p>
+                </div>
+
+
+
+
+                <div class="card-body p-2 p-sm-5 card rounded-25" id="r1" style="display: none;">
+                    <h3><strong>Información personal</strong></h3>
+
+                    <!-- Input usuario -->
+                    <div class="form-group">
+                        <label for="inputnombreUsuario">Nombre de usuario</label>
+                        <input type="text" class="form-control" formControlName="nombreUsuario" (change)="cambioCheckForm();" id="inputnombreUsuario" placeholder="Nombre de usuario">
+                        <div class="invalid-feedback">
+                            Este campo no debe estar vacío.
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <!-- Input nombre -->
+                        <div class="form-group col-6 pe-1">
+                            <label for="inputnombre">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre" id="inputnombre" (change)="cambioCheckForm();" placeholder="Nombre">
+                            <div class="invalid-feedback">
+                                Este campo no debe estar vacío.
+                            </div>
+                        </div>
+
+                        <!-- Input apellidos -->
+                        <div class="form-group col-6 ps-1">
+                            <label for="inputApellidos">Apellidos</label>
+                            <input type="text" class="form-control" formControlName="apellidos" id="inputApellidos" placeholder="Apellidos">
+                        </div>
+                    </div>
+
+                    <!-- Input empresa -->
+                    <div class="form-group">
+                        <label for="inputempresa">Profesión / Empresa</label>
+                        <input type="text" class="form-control" formControlName="empresa" id="inputEmpresa" placeholder="Profesión / Empresa">
+                    </div>
+
+                    <div class="d-flex">
+                        <!-- Input email -->
+                        <div class="form-group col-6 pe-1">
+                            <label for="inputemail">Email</label>
+                            <input type="email" class="form-control" formControlName="email" (change)="cambioCheckForm();" id="inputemail" placeholder="Email" required="">
+                            <div class="invalid-feedback">
+                                {{ mensajeErrorEmail }}
+                            </div>
+                        </div>
+
+                        <!-- Input teléfono -->
+                        <div class="form-group col-6 ps-1">
+                            <label for="inputTelf">Teléfono</label>
+                            <input type="text" class="form-control" formControlName="telefono" id="inputTelf" placeholder="Teléfono">
+                        </div>
+                    </div>
+
+                    <div class="d-flex form-group pt-4">
+                        <div class="col-6 pe-1">
+
+                          <div *ngIf="this.registroPasosIniciado === false; then ifRegistroInicio; else ifRegistroFin"></div>
+                          <ng-template #ifRegistroInicio>
+                            <div (click)="v0()" (click)="mostrar()" style="width: 100%; color: black; background-color: rgb(228, 228, 228);" class="btn btn-primary fw-bold"><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Volver</div>
+                          </ng-template>
+                          <ng-template #ifRegistroFin>
+                            <div (click)="v0()" (click)="ocultar()" style="width: 100%; color: black; background-color: rgb(228, 228, 228);" class="btn btn-primary fw-bold"><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Volver</div>
+                          </ng-template>
+                        </div>
+                        <div class="col-6 ps-1">
+                            <div (click)="r2()" style="width: 100%; background-color: var(--primary-color);" class="btn btn-primary fw-bold" ><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Siguiente</div>
+                        </div>
+                    </div>
+
+                  <!-- Círculos paso -->
+                  <div style="text-align:center;margin-top:40px;">
+                    <span class="step active"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                  </div>
+
+                </div>
+
+                <div class="card-body p-2 p-sm-5 card rounded-25" id="r2" style="display: none;">
+                    <h3><strong>Contraseña</strong></h3>
+
+                    <!-- Grid de dos columnas para contraseña -->
+                    <div class="row mt-2">
+                        <div class="col-6 pe-1">
+                            <div class="form-group">
+                                <label for="inputpassword">Contraseña</label>
+                                <input type="password" class="form-control" formControlName="password" (change)="cambioCheckForm(); onPasswordChange();" id="inputpassword" placeholder="Contraseña">
+                                <div class="invalid-feedback">
+                                    Debes introducir una contraseña válida que cumpla lo siguiente.
+                                    <ul>
+                                        <li>Mínimo 9 caracteres</li>
+                                        <li>Una letra minúscula</li>
+                                        <li>Una letra mayúscula</li>
+                                        <li>Un número</li>
+                                        <li>Un carácter especial ({{caracteresEspeciales}})</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 ps-1">
+                            <div class="form-group">
+                                <label for="inputpassword2">Repetir contraseña</label>
+                                <input type="password" class="form-control" formControlName="password2" (change)="cambioCheckForm(); onPasswordChange();" id="inputpassword2" placeholder="Repetir Contraseña">
+                                <div class="invalid-feedback">
+                                    Las contraseñas deben coincidir.
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span *ngIf="confirm_password.hasError('mismatch')">Las contraseñas no coinciden.</span>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex form-group pt-4">
+                        <div class="col-6 pe-1">
+                            <div (click)="v1()" style="width: 100%; color: black; background-color: rgb(228, 228, 228);" class="btn btn-primary fw-bold" ><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Volver</div>
+                        </div>
+                        <div class="col-6 ps-1">
+                            <div (click)="r3()" style="width: 100%; background-color: var(--primary-color);" class="btn btn-primary fw-bold" ><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Siguiente</div>
+                        </div>
+                    </div>
+
+                  <!-- Círculos paso -->
+                  <div style="text-align:center;margin-top:40px;">
+                    <span class="step finish"></span>
+                    <span class="step active"></span>
+                    <span class="step"></span>
+                  </div>
+
+
+                </div>
+
+                <div class="card-body p-2 p-sm-5 card  rounded-25" id="r3" style="display: none;">
+                    <h3><strong>Imagen de perfil</strong></h3>
+
+                    <!-- Grid de dos columnas para foto -->
+                    <!-- Grid de dos columnas para foto -->
+                    <div class="d-flex flex-column">
+                        <input type="file" accept="image/*" style="display:none;" id="inputimage" class="form-control" formControlName="imagen" (change)="cargararchivo($event);" #fileUpload>
+                        <div class="d-flex flex-row align-middle">
+                            <div class=""><button type="button" class="mt-5 btn me-3" (click)="fileUpload.click()" style="background-color: var(--secondary-color); color:white; font-weight: 400;">Selecciona foto de perfil</button></div>
+                            <div><img id="output" class='mx-auto my-2' src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" style="width:fit-content;height:150px ;" /></div>
+                        </div>
+                    </div>
+
+                     <!-- Términos y condiciones -->
+                     <div class="form-check mt-3">
+                        <input class="form-check-input form-check-unchecked" formControlName="formTer" type="checkbox" (change)="cambioCheckForm();" value="" id="inputformTer" />
+                        <label class="form-check-label" for="inputformTer">Acepto el <a routerLink="/legal" target=”_blank” style="color: black; text-decoration: none;"><strong>Aviso Legal</strong></a> y la <a routerLink="/privacidad" target=”_blank” style="color: black; text-decoration: none;"><strong>Política de privacidad </strong></a></label>
+                        <div class="invalid-feedback">
+                            Debes aceptar elAviso legal y la Política de privacidad.
+                        </div>
+                    </div>
+
+                    <div class="d-flex form-group pt-4">
+                        <div class="col-6 pe-1">
+                            <div (click)="v2()" style="width: 100%; color: black; background-color: rgb(228, 228, 228);" class="btn btn-primary fw-bold"><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Volver</div>
+                        </div>
+                        <div class="col-6 ps-1">
+                            <button style="width: 100%; background-color: var(--primary-color);" class="btn btn-primary fw-bold" [disabled]="waiting" type="submit"  ><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting" ></i>Registrar</button>
+                        </div>
+                    </div>
+
+                    
+
+                  <!-- Círculos paso -->
+                  <div style="text-align:center;margin-top:40px;">
+                    <span class="step finish"></span>
+                    <span class="step finish"></span>
+                    <span class="step active"></span>
+                  </div>
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</section>

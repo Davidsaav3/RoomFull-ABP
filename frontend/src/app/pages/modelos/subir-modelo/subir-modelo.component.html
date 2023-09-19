@@ -1,0 +1,170 @@
+<div class="d-flex flex-wrap">
+    <div style="width: 35%; background-color: rgb(245, 245, 245);">
+        <form (ngSubmit)="subirModelo()" [formGroup]="subirModelForm" id="subirModelForm" class="row g-3 m-5">
+            <h3 style="margin: 0px;"><strong>Subir modelo</strong></h3>
+            <div class="form-floating col-12">
+                <input type="text" class="form-control " formControlName="title" style="height: 55px" id="inputtitle" (change)="cambioCheckForm();" placeholder="Título">
+                <label for="inputtitle" class="floatingInput">Título del modelo</label>
+                <div class="invalid-feedback">
+                    Este campo no debe estar vacío.
+                </div>
+            </div>
+            <div class="form-floating col-12 my-4">
+                <textarea class="form-control" formControlName="description" id="inputdescription" placeholder="Descripción" (change)="cambioCheckForm();" style="height: 80px"></textarea>
+                <label for="inputdescription" class="floatingInput">Descripción del modelo</label>
+                <div class="invalid-feedback">
+                    Este campo no debe estar vacío.
+                </div>
+            </div>
+
+
+            <div style="justify-content: space-between;" class="col-12 mt-2 d-flex m-0">
+                <div class="">
+                    <input type="file" accept="image/*" style="display:none;" id="inputimage" class="form-control" formControlName="image" (change)="cargararchivo($event); cambioCheckForm();" #fileUpload>
+                    <button type="button" class="btn btn2 " (click)="fileUpload.click()" style="background-color: rgb(228, 228, 228); color: black; border: 0.1rem solid #dbdbdb;"><strong>Selecciona imagen</strong></button>
+                    <div class="invalid-feedback">
+                        Debes seleccionar una imagen.
+                    </div>
+                    <p class="mt-1">{{imageName || "No se ha subido ningún archivo"}}</p>
+
+                    <input type="file" style="display:none;" accept=".gltf" class="form-control" id="inputmodel" formControlName="model" (change)="cargarmodelo($event);  cambioCheckForm();" #modelUpload>
+                    <button type="button" class="btn btn2" (click)="modelUpload.click()" style="background-color: rgb(228, 228, 228); color: black; border: 0.1rem solid #dbdbdb;"><strong>Selecciona modelo</strong></button>
+                    <div class="invalid-feedback">
+                        Debes seleccionar un modelo.
+                    </div>
+                    <p class="mt-1">{{fileName || "No se ha subido ningún archivo"}}</p>
+                </div>
+                <div class="ms-2">
+                    <img id="output" class='mx-auto' src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" style="width:fit-content;height:145px; border-radius: 7px; border: solid 1px rgb(213, 213, 213)" />
+                </div>
+            </div>
+
+            <!-- <div class="col-12 p-0 m-0 mt-3 px-2">
+                <form [formGroup]="newForm"style="display: flex; ">
+                    <div><button type="button" style="background-color: rgb(228, 228, 228); color: black; border: 0.1rem solid #dbdbdb;" (click)="anadirpunto()" class="me-2 btn btn-dark"><strong>Añadir</strong></button></div>
+                    <div style="width: 100%;"><select name="sel" (ngModelChange)="iralpunto($event)" formControlName="sel" class="form-select">
+                    <option value="">Puntos de observación</option>
+                    <option *ngFor="let item of puntos; index as i" value="{{i}}">{{item}}</option>
+                    </select></div>
+                </form>
+            </div> -->
+
+            <div class="col-12 mt-5" style="display: flex; justify-content: space-between;">
+                <div style="display: flex;">
+                    <div class="mt-3"><strong>Modelo público</strong></div>
+                    <div class="ms-4 form-check form-switch">
+                        <input class="form-check-input form-control" style="width:3.4em; height:1.7em;" formControlName="public" type="checkbox" id="flexSwitchCheckChecked">
+                    </div>
+                </div>
+                <div>
+                    <button style="background-color: var(--primary-color);" type="submit" class="btn btn-primary"><strong>Subir modelo</strong></button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+    <div style="min-width:20em ;width: 65%; overflow: hidden; position:relative ">
+        <!--<div style="position :absolute; width: 100% ; height: 90vh; display: flex; flex-direction: row; justify-content: start;">
+            <form [formGroup]="newForm">
+                <button type="button" (click)="anadirpunto()" class="btn btn-dark">Añadir puntos</button>
+                <select name="sel" (ngModelChange)="iralpunto($event)" formControlName="sel" class="form-select">
+                <option value="">Puntos de observacion</option>
+                <option *ngFor="let item of puntos; index as i" value="{{i}}">{{item}}</option>
+                </select>
+            </form>
+       </div>-->
+        <app-engine modeloacargar={{idEscena}} page="subirM"></app-engine>
+
+        <div style="padding-right:1.5vw ">
+            <div [class]="{'arriba':this.menuState2}" class="dropMenu">
+                <span class="dropItem">
+                    <p (click)="mostrarOcultarSeccion('settingVisual');">Puntos de vista</p>
+                    <button data-op="settingVisual" [ngClass]="{'selected' : this.opcionActiva=='settingVisual'}" (click)="mostrarOcultarSeccion('settingVisual');" type="button"><i class="fas fa-eye"></i></button>
+                </span>
+            </div>
+        </div>
+
+
+    <div *ngIf="this.opcionActiva=='settingVisual'" id="settingVisual" class="dropWindow">
+        <div style="background-color: none!important;"><button type="button" (click)="cerrarVentana()" class="closeB"><i class="fa fa-close flex" style="font-size: 0.7em;"></i></button></div>
+
+        <div class="optionNav mt-2" >
+            <span [class]="{'opened': stateNavOptions=='momentoD'}" class="optionNavItem" (click)="cambiarStateNavOptions('momentoD');">Iluminación</span>
+            <span [class]="{'opened': stateNavOptions=='fondo'}" class="optionNavItem" (click)="cambiarStateNavOptions('fondo');">Fondo</span>
+            <span [class]="{'opened': stateNavOptions=='meteo'}" class="optionNavItem" (click)="cambiarStateNavOptions('meteo');">Ambiente</span>
+            <!--<span [class]="{'opened': stateNavOptions=='camara'}" class="optionNavItem " (click)="cambiarStateNavOptions('camara');">Cámara</span>-->
+        </div>
+
+        <div class="optionContainer">
+            <div class="optionDiv" >
+                <div [class]="{'visible': stateNavOptions=='camara', 'invisible':stateNavOptions!='camara' }" >
+                    <div class="form-check form-switch textDropWindow d-flex" style="align-items: center;">
+                        <label class="form-check-label mt-3"  for="flexSwitchCheckAutoRotate">Rotación automática de la cámara </label>
+                        <input class="form-check-input d-flex" style="align-items: center;" type="checkbox" id="flexSwitchCheckAutoRotate">
+                    </div>
+                </div>
+                <div [class]="{'visible': stateNavOptions=='fondo', 'invisible':stateNavOptions!='fondo'}" class="form-check form-switch textDropWindow">
+                    <div class="fondosContainer">
+                        <div class="recuadro m-1"><img src="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/05/13/16524380458161.jpg" alt="">
+                            <p>Playa</p>
+                        </div>
+                        <div class="recuadro m-1"><img src="https://img.freepik.com/foto-gratis/gran-paisaje-verde-cubierto-cesped-rodeado-arboles_181624-14827.jpg" alt="">
+                            <p>Campo</p>
+                        </div>
+                    </div>
+                    <div class="fondosContainer">
+                        <div class="recuadro m-1"><img src="https://okdiario.com/img/2022/11/20/soria-1-655x368.jpg" alt="">
+                            <p>Pueblo</p>
+                        </div>
+                        <div class="recuadro m-1"><img src="https://4.bp.blogspot.com/-5Js-mBieX58/VtcrPGaKtFI/AAAAAAAAQOk/EmYvngBsMb4/w1200-h630-p-k-no-nu/1109-%2Bdescampado.jpg" alt="">
+                            <p>Descampado</p>
+                        </div>
+                    </div>
+                    <div class="fondosContainer">
+                        <div class="recuadro m-1"><img src="https://www.shutterstock.com/image-photo/panoramic-skyline-modern-commercial-office-260nw-2104341320.jpg" alt="">
+                            <p>Ciudad</p>
+                        </div>
+                        <div class="recuadro m-1"><img src="https://img.freepik.com/foto-gratis/gran-paisaje-verde-cubierto-cesped-rodeado-arboles_181624-14827.jpg" alt="">
+                            <p>Chroma</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div [class]="{'visible': stateNavOptions=='momentoD', 'invisible':stateNavOptions!='momentoD' }" class="form-check form-switch textDropWindow">
+                    <div class="fondosContainer">
+                        <div class="recuadro m-1"><i class="bi bi-brightness-alt-high-fill" style="font-size: larger;"></i>
+                            <p>Amanecer</p>
+                        </div>
+                        <div class="recuadro m-1"><i class="bi bi-sun-fill" style="font-size: large;"></i>
+                            <p>Medio dia</p>
+                        </div>
+                        <div class="recuadro m-1"><i class="bi bi-brightness-alt-low-fill" style="font-size: larger;"></i>
+                            <p>Atardecer</p>
+                        </div>
+                        <div class="recuadro m-1"><i class="bi bi-moon-fill" style="font-size: large;"></i>
+                            <p>Noche</p>
+                        </div>
+                    </div>
+                </div>
+                <div [class]="{'visible': stateNavOptions=='meteo', 'invisible':stateNavOptions!='meteo' }" class="form-check form-switch textDropWindow">
+                    <div class="fondosContainer">
+                        <div class="recuadro m-1"><i class="bi bi-sun-fill" style="font-size: larger;"></i>
+                            <p>Soleado</p>
+                        </div>
+                        <div class="recuadro m-1"><i class="bi bi-cloud-fill" style="font-size: large;"></i>
+                            <p>Nublado</p>
+                        </div>
+                        <div class="recuadro m-1"><i class="bi bi-cloud-drizzle-fill" style="font-size: larger;"></i>
+                            <p>Lluvioso</p>
+                        </div>
+                        <div class="recuadro m-1"><i class="bi bi-cloud-lightning-fill" style="font-size: large;"></i>
+                            <p>Tormentoso</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

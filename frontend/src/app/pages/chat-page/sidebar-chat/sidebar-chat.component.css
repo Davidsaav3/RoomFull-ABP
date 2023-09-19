@@ -1,0 +1,140 @@
+*{
+	box-sizing:border-box;
+}
+
+aside{
+	width:100%;
+	height:90vh;
+	background-color: /*#3b3e49*/ rgb(228, 228, 228);
+	display:inline-block;
+	font-size:15px;
+	vertical-align:top;
+  overflow-y: scroll;
+  padding-left: 15px;
+}
+
+aside header{
+  padding: 30px 5px;
+}
+
+aside input{
+	width:100%;
+	height:37px;
+	line-height:50px;
+	padding:0 50px 0 20px;
+	background-color: white;
+	border:none;
+	border-radius: 6px;
+	color: #000000;
+}
+
+aside input::placeholder{
+	color:black;
+}
+
+aside ul{
+	padding-left:0;
+	margin:0;
+	list-style-type:none;
+}
+
+aside li{
+	padding:10px 0;
+  cursor:pointer;
+  transition: 0.2s linear;
+}
+
+aside li:hover{
+	border: 1px solid rgb(245, 245, 245);
+	border-radius: 7px;
+	background-color: white;}
+
+h2,h3{
+	margin:0;
+}
+
+hr {
+  color:#9ea0a7;
+}
+
+aside li img{
+	border-radius:50%;
+	margin-left:15px;
+	margin-right:13px;
+}
+
+aside li div{
+	display:inline-block;
+	vertical-align:top;
+	margin-top:8px;
+}
+
+aside li h2{
+	font-size:14px;
+	color:black;
+	font-weight:normal;
+	margin-bottom:5px;
+}
+
+aside li h3 {
+	font-size:12px;
+	color:#7e818a;
+	font-weight:normal;
+}
+
+.texto-nohay {
+	color:black;
+}
+
+.link-settings{
+  text-decoration: none;
+  color: black;
+}
+
+.link-settings-2{
+  text-decoration: none;
+	color:#7e818a;
+}
+
+.activo{
+	border: 1px solid rgb(245, 245, 245);
+	border-radius: 7px;
+	background-color: rgb(245, 245, 245);
+}
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #ececec;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #ececec;
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #969696;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(199, 202, 202);
+  }
+
+  /* Botones emisor receptor */
+  .push {
+    margin-left:auto;
+    padding: 1.5vh;
+  }

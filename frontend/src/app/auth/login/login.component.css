@@ -1,0 +1,35 @@
+.rounded-25 {
+  border-radius: 17px;
+}
+
+.bg-gris-claro{
+  background-color: var(--third-color);
+}
+
+.btn-google {
+  background-color: var(--divider-color);
+}
+
+.btn-seleccionar{
+  background-color: var(--divider-color);
+}
+
+.profile-pic{
+  background-color: var(--divider-color);
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: #a4a4a4;
+}
+
+.vertical-center {
+  vertical-align: middle;
+}

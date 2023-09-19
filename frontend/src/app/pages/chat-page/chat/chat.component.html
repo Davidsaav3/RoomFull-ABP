@@ -1,0 +1,101 @@
+
+<main>
+
+  <header class="d-flex">
+      <div *ngIf="this.metodo === 'google'; then ifGoogle; else ifNormal" >
+      </div>
+      <ng-template #ifGoogle>
+        <img src="{{this.imagen}}" class="rounded-circle mr-1 align-middle foto" alt="" width="45" height="45">
+      </ng-template>
+      <ng-template #ifNormal>
+        <img src="../../assets/uploads/fotoperfil/{{this.imagen}}"  class="rounded-circle mr-1 align-middle foto" alt="" width="45" height="45">
+      </ng-template>
+      <h2>
+        <a class="nav-link"  (click)="irUsuario(this.nombreUsuario);" ><strong>{{this.nombreUsuario}}</strong></a>
+      </h2>
+    <div class="d-flex justify-content-end">
+      <button (click)="MostrarModalEliminar();" class="btn border px-3 color"><i class="fa fa-trash me-1"></i></button>
+    </div>
+  </header>
+
+  <div id="chatC" (scroll)="onElementScroll($event)">
+
+    <div *ngIf="this.hayMensajes; then mostrarChat; else mostrarVacio" >
+    </div>
+
+    <ng-template #mostrarVacio >
+      <div style="display:flex; align-items:center;">
+        <p style="margin: 0 auto;">No hay mensajes que mostrar</p>
+      </div>
+    </ng-template>
+
+
+    <ng-template #mostrarChat>
+      <div *ngFor="let mensaje of mensajes_paginados" >
+
+        <!-- Todos los chats enviados por mí salen a la derecha -->
+        <div *ngIf="mensaje.idUsuarioEmi == this.uid; then mostrarDer; else mostrarIzq" >
+        </div>
+
+        <ng-template #mostrarDer>
+          <li class="me">
+            <div class="message emisor" (click)="accesoMencionado(mensaje.mensajes)">
+              {{mensaje.mensajes}}
+            </div>
+            <div class="entete">
+              <h3 class="me-2">
+                {{mensaje.fecha | date:'shortDate'}}
+                <div class="text-muted div-me">
+                  {{mensaje.fecha | date:'shortTime'}}
+                </div></h3>
+            </div>
+          </li>
+        </ng-template>
+
+        <ng-template #mostrarIzq>
+          <li class="you">
+            <div class="message receptor" (click)="accesoMencionado(mensaje.mensajes)">
+              {{mensaje.mensajes}}
+            </div>
+            <div class="entete">
+              <span class="status green"></span>
+              <h3 class="me-2">
+                {{mensaje.fecha | date:'shortDate'}}
+                <div class="text-muted div-me">
+                  {{mensaje.fecha | date:'shortTime'}}
+                </div>
+              </h3>
+            </div>
+          </li>
+        </ng-template>
+
+      </div>
+  </ng-template>
+  </div>
+
+  <div class="div_modelos">
+    <div class="flex_div" *ngFor="let modelo of modelos_list">
+    <div class="modelo_opt" (click)="seleccionarModelo(modelo.uid)">
+      <img src="../../assets/uploads/imagenEscena/{{modelo.imagen}}">
+      <p>{{modelo.nombre}}</p>
+    </div>
+  </div>
+  </div>
+  <form id="chatForm" (ngSubmit)="enviarMensaje()" [formGroup]="chatForm">
+    <button class="btn botonchat " title="Eliminar conversación" >Enviar</button>
+    <textarea type="text" class="form-control h textareaFormControl mencion" (input)="mencionModelo()" formControlName="mensajes" placeholder="Escribe tu mensaje..."></textarea>
+  </form>
+
+</main>
+
+
+<div class="ModalContainer ">
+  <div class="mensajemodal ">
+      <h4>¿Desea eliminar esta conversación?</h4>
+      <p class="text-center"> Esta opción es irreversible</p>
+      <div>
+          <button type="button " (click)="eliminarChat(); " class="btn btn-success ">Aceptar</button>
+          <button type="button " (click)="EsconderModalEliminar(); " class="btn btn-danger ">Cancelar</button>
+      </div>
+  </div>
+</div>

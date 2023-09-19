@@ -1,0 +1,98 @@
+	<aside>
+
+    <!-- Barra búsqueda -->
+
+    <div *ngIf="this.totalReal > 0; then mostrarBarra; else mostrarVacio" >
+    </div>
+    <ng-template #mostrarVacio >
+      <header class="px-0">
+        <p class="ps-3 mt-2 texto-nohay">No hay conversaciones...</p>
+      </header>
+    </ng-template>
+    <ng-template #mostrarBarra >
+      <header class="px-0">
+        <input type="text" placeholder="Buscar chat..." (keyup)="onKeySearch($event)">
+      </header>
+
+    </ng-template>
+
+    <!-- Chats -->
+    <div *ngFor="let chat of chatList">
+
+      <ul>
+
+        <!-- Chat individual -->
+        <div *ngIf="this.chatCambiar == chat.uid; then mostrarActivo; else mostrarNoActivo" >
+        </div>
+        <ng-template #mostrarActivo >
+          <li (click)="abrirChat(chat.uid);" class="activo d-flex">
+            <div *ngIf="chat.usuario.metodo === 'google'; then ifGoogle; else ifNormal" >
+            </div>
+            <ng-template #ifGoogle>
+              <img src="{{chat.usuario.imagen}}" class="rounded-circle mr-1 foto" alt="" width="45" height="45">
+            </ng-template>
+            <ng-template #ifNormal>
+              <img src="../../assets/uploads/fotoperfil/{{chat.usuario.imagen}}"  class="rounded-circle mr-1
+              foto" alt="" width="45" height="45">
+            </ng-template>
+            <div>
+              <h2>
+                <a class="link-settings" >{{chat.usuario.nombreUsuario}}</a>
+              </h2>
+              <h3>
+                {{chat.asunto.toString()}}
+              </h3>
+            </div>
+            <div *ngIf="chat.idUsuarioEmi == this.uid; then mostrarEmisor; else mostrarReceptor" >
+            </div>
+            <ng-template #mostrarEmisor emi>
+              <i style='color:rgb(0, 32, 240)' class="fa fa-level-up push" title="Tus consultas"></i>
+            </ng-template>
+
+            <ng-template #mostrarReceptor rec>
+              <i style='color:rgb(10, 121, 0)' class="fa fa-level-down push" title="Consultas de clientes"></i>
+            </ng-template>
+
+          </li>
+        </ng-template>
+
+
+        <ng-template #mostrarNoActivo >
+          <li (click)="abrirChat(chat.uid);" class="d-flex">
+            <div *ngIf="chat.usuario.metodo === 'google'; then ifGoogle; else ifNormal" >
+            </div>
+            <ng-template #ifGoogle>
+              <img src="{{chat.usuario.imagen}}" class="rounded-circle mr-1 foto" alt="" width="45" height="45">
+            </ng-template>
+            <ng-template #ifNormal>
+              <img src="../../assets/uploads/fotoperfil/{{chat.usuario.imagen}}"  class="rounded-circle mr-1
+              foto" alt="" width="45" height="45">
+            </ng-template>
+            <div>
+              <h2>
+                <a class="link-settings" >{{chat.usuario.nombreUsuario}}</a>
+              </h2>
+              <h3>
+                {{chat.asunto.toString()}}
+              </h3>
+            </div>
+            <div *ngIf="chat.idUsuarioEmi == this.uid; then mostrarEmisor; else mostrarReceptor" >
+            </div>
+            <ng-template #mostrarEmisor >
+              <i style='color:rgb(0, 32, 240)' class="fa fa-level-up push" title="Tus consultas"></i>
+            </ng-template>
+
+            <ng-template #mostrarReceptor >
+            <i style='color:rgb(10, 121, 0)' class="	fa fa-level-down push" title="Consultas de clientes"></i>
+            </ng-template>
+          </li>
+        </ng-template>
+
+        <hr>
+
+      </ul>
+    </div>
+
+
+
+	</aside>

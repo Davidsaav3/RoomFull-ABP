@@ -1,0 +1,233 @@
+.tarjetaModelo {
+    max-width: 380px;
+    min-width: 285px;
+    border-radius: 15px;
+    background-color: rgb(245, 245, 245);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: min-content;
+}
+
+.tarjetaModelo>p.h5 {
+    font-weight: 700;
+}
+
+.tarjetaModelo>.fila1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tarjetaModelo>.fila1>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a.modellink:link,
+a.modellink:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a.modellink:hover {
+    text-decoration: none;
+    background-color: #a4a4a4;
+}
+
+.tarjetaModelo>.fila1>div>img {
+    margin-right: 20px;
+}
+
+.tarjetaModelo>a>img {
+    margin: 0 auto;
+    height: 10em;
+    width: auto;
+}
+
+.btn-link {
+    font-size: 0.8em;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(228, 228, 228);
+    border-radius: 8px;
+    width: 100%;
+}
+
+.btn-link:hover {
+    color: rgb(75, 75, 75);
+    text-decoration: none;
+    color: black;
+}
+
+.btn-interacciones {
+    background-color: var(--card-color);
+    border-color: black;
+}
+
+#modelosdest>h4 {
+    margin: 2em;
+    font-size: 1.6em;
+}
+
+#modelosrec>h4 {
+    margin: 2em;
+    font-size: 1.6em;
+}
+
+#modelosrec {
+    margin-bottom: 2em;
+}
+
+.liked {
+    color: rgb(255, 50, 50);
+}
+
+.saved {
+    color: rgb(5, 169, 5)
+}
+
+.publico {
+    background-color: rgb(5, 169, 5);
+    justify-content: center;
+    /* padding: 0.3em; */
+    padding: auto;
+    border-radius: 5px;
+    /* padding-top: 5px; */
+    color: white;
+}
+
+.privado {
+    background: rgb(255, 50, 50);
+    justify-content: center;
+    /* padding: 0.3em;
+    padding-top: 5px; */
+    padding: auto;
+    /* margin: 1em 0; */
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+}
+
+.imagePointer:hover {
+    cursor: pointer;
+}
+
+
+/*.tarjetaModelo {
+    padding: 2em;
+    border: 1px black solid;
+    margin: 0 2em;
+    max-width: 30em;
+    border-radius: 30px;
+    background-color: rgb(245, 245, 245);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.tarjetaModelo>p.h5 {
+    font-weight: 700;
+}
+
+.tarjetaModelo>.fila1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tarjetaModelo>.fila1>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a.modellink:link,
+a.modellink:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a.modellink:hover {
+    color: rgb(75, 75, 75);
+    text-decoration: none;
+}
+
+.tarjetaModelo>.fila1>div>img {
+    margin-right: 20px;
+}
+
+.tarjetaModelo>a>img {
+    margin: 0 auto;
+    height: 10em;
+    width: auto;
+}
+
+.btn-link {
+    font-size: 0.8em;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(228, 228, 228);
+    border: 2px black solid;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.btn-link:hover {
+    color: rgb(75, 75, 75);
+}
+
+.btn-interacciones {
+    background-color: var(--card-color);
+    border-color: black;
+}
+
+#modelosdest>h4 {
+    margin: 2em;
+    font-size: 1.6em;
+}
+
+#modelosrec>h4 {
+    margin: 2em;
+    font-size: 1.6em;
+}
+
+#modelosrec {
+    margin-bottom: 2em;
+}
+
+.liked {
+    color: #dc3545;
+}
+
+.saved {
+    color: rgb(5, 169, 5)
+}
+
+.publico {
+    background: rgb(118, 250, 111);
+    justify-content: center;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+.privado {
+    background: rgb(246, 102, 102);
+    justify-content: center;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 50px;
+    text-transform: uppercase;
+}*/

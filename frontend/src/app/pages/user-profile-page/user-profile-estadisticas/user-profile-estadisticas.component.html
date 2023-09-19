@@ -1,0 +1,127 @@
+<section class="container-fluid bg-gris-claro pt-1">
+    <div class="row">
+
+    <!-- /////////////////////  USUARIO  ///////////////////// -->
+
+    <div class="card-body p-0 card row rounded-25 m-2 d-flex col-lg-3 pb-4 px-3" style="flex-direction: row;">
+        <h3 class="mt-3"><strong>Usuario</strong> {{this.usuario}}</h3>
+        <div class="row">
+            <div class="col-5"> 
+                <div class="row">
+                    <p class="m-0 pt-3"><strong><i _ngcontent-hxa-c101="" class="bi bi-box-fill me-1"></i> Públicos</strong></p>
+                    <p class="m-0">{{this.mod_pub}} modelos</p>
+                </div>
+                <div class="row">
+                    <p class="m-0 pt-5"><strong><i _ngcontent-hxa-c101="" class="bi bi-box-fill me-1"></i> Privados</strong></p>
+                    <p class="m-0">{{this.mod_priv}} modelos</p>
+                </div>
+            </div>
+            <div class="col-5"> 
+                <div class="pb-3" id="chart-container" echarts [options]="velocidad_4" style="height: 200px;transform: scale(1.5);"></div>
+            </div>
+        </div>
+        <p style="text-align: center" class="m-0">Mejora tu suscripción para subir más modelos</p>
+    </div>
+
+    <!-- ///////////////////// INTERES ///////////////////// -->
+
+    <div class="card-body p-0 card row rounded-25 m-2 d-flex col-lg-5" style="flex-direction: row;">
+        <h3 class="ms-3 mt-3"><strong>Interés en</strong> {{this.usuario}}</h3>
+        <div echarts [options]="interes" style="height: 240px; transform: scale(1);" class=""></div>
+    </div>
+
+    <!-- ///////////////////// ACTIVIDAD TOTAL ///////////////////// -->
+
+    <div class="card-body p-0 card row rounded-25 m-2 d-flex col-lg-3" style="flex-direction: row;">
+        <h3 class="ms-3 mt-3"><strong>Actividad total</strong></h3>
+        <div echarts [options]="actividad_total" class="mt-0 chart-containe" style="height: 280px; transform: scale(1.1);"></div>
+    </div>
+
+    <!-- ///////////////////// MODELO ///////////////////// -->
+
+    <div class="card-body p-0 card row rounded-25 m-2 d-flex col-lg-5" style="flex-direction: row;">
+        <div class="d-flex" style="justify-content: space-between;">
+            <h3 class="mt-3 ms-3"><strong>Modelo</strong> {{this.nombre_modelo}}</h3>
+
+            <div class="dropdown mt-3 me-1">
+          
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: rgb(228, 228, 228); color: black; border: 0px;transform: scale(1.1);">
+                  <strong>modelo</strong>
+              </button>
+              <div>
+
+              </div>
+              <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                <div _ngcontent-lbf-c90="" _ngcontent-evc-c87="" class="input-group mb-3">
+                  <input _ngcontent-lbf-c90="" _ngcontent-evc-c87="" type="text" id="contenidoBusqueda" placeholder="Buscar..." class="form-control" (keyup)="onKeySearch($event)" [(ngModel)]="this.textoBusqueda">
+                  <div _ngcontent-lbf-c90="" _ngcontent-evc-c87="" class="input-group-append">
+                      <a _ngcontent-lbf-c90="" _ngcontent-evc-c87="" routerLink="/admin/administracion/conversaciones" type="submit" class="btn btn-light" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                          <i _ngcontent-lbf-c90="" _ngcontent-evc-c87="" class="fas fa-search"></i>
+                      </a>
+                  </div>
+              </div>
+                <div *ngFor="let modelo of modelosUsuario">
+                  <a (click)="obtener_modelo(modelo.nombre)" class="dropdown-item">{{modelo.nombre}}</a>
+                </div>
+              </div>
+          </div>
+
+        </div>
+
+        <!-- ///////////////////// MODELO ///////////////////// -->
+
+        <div class="row">
+
+            <div class="col-4">
+                <div class="row">
+                     <svg *ngIf="this.vis>=0" style="color: rgb(5, 169, 5);" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="mt-4 bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                        <path  fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"></path>
+                    </svg>
+                    <svg *ngIf="this.vis<0" style="color: rgb(255, 50, 50);;" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="mt-4 bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"></path>
+                    </svg>
+                    <p class="m-0" style="text-align: center;"><strong>{{this.arriba_vis}} Visualizaciones</strong></p>
+                    <p class="m-0" style="text-align: center;" class="mb-4">{{this.tend_vis}}</p>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="row">
+                    <svg *ngIf="this.like>=0" style="color: rgb(5, 169, 5);" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="mt-4 bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"></path>
+                    </svg>
+                    <svg *ngIf="this.like<0" style="color: rgb(255, 50, 50);" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="mt-4 bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"></path>
+                    </svg>
+                    <p class="m-0" style="text-align: center;"><strong>{{this.arriba_like}} Me gusta</strong></p>
+                    <p class="m-0" style="text-align: center;" class="mb-4"> {{this.tend_like}}</p>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div  class="row">
+                    <svg *ngIf="this.guard>=0" style="color: rgb(5, 169, 5);" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="mt-4 bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"></path>
+                    </svg>
+                    <svg *ngIf="this.guard<0" style="color: rgb(255, 50, 50);" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="mt-4 bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"></path>
+                    </svg>
+                    <p class="m-0" style="text-align: center;"><strong>{{this.arriba_guard}} Guardados</strong></p>
+                    <p class="m-0" style="text-align: center;" class="mb-4">{{this.tend_guard}}</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ///////////////////// MODELOS DATOS ///////////////////// -->
+
+    <div class="card-body p-0 card row rounded-25 m-2 d-flex col-lg-6 pb-4 px-3 pt-4" style="flex-direction: row;">
+        <div echarts [options]="modelos_datos" class="chart-container" style="height: 210px;"></div>
+    </div>
+
+
+    </div>
+</section>

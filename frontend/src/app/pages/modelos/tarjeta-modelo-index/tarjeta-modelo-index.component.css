@@ -1,0 +1,239 @@
+.tarjetaModelo {
+    width: 37vh;
+    height: 37vh;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.1) -10px 10px 12px -5px, rgba(0, 0, 0, 0.04) 5px 5px 5px -5px;
+    transition: 0.5s linear;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+/* .tarjetaModelo:hover .imagen {
+    filter: brightness(0.4);
+    transition-duration: 0.5s;
+}
+ */
+
+.tarjetaModelo:hover .info {
+    background-color: rgba(0, 0, 0, 0.65);
+    opacity: 1;
+}
+
+.tarjetaModelo:hover .titulo {
+    background-color: rgba(255, 255, 255, 0.0);
+    color: #ffffff;
+    transition-duration: 0.3s;
+    border-bottom: solid;
+    border-radius: 0;
+}
+
+.tarjetaModelo:hover .like-but {
+    font-size: 1.8em;
+}
+
+.tarjetaModelo>p.h5 {
+    font-weight: 700;
+}
+
+.tarjetaModelo>.fila1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tarjetaModelo>.fila1>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a.modellink:link,
+a.modellink:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a.modellink:hover {
+    text-decoration: none;
+}
+
+.tarjetaModelo>.fila1>div>img {
+    margin-right: 20px;
+}
+
+.tarjetaModelo>a>img {
+    margin: 0 auto;
+    height: 30%;
+    width: auto;
+}
+
+.like-but {
+    font-size: 1.6em;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+    width: 4vw;
+    position: absolute;
+    -webkit-text-stroke: 1px white;
+    right: 0;
+    padding-right: 1.6em;
+    z-index: 13;
+    transition: .2s linear;
+}
+
+.like-but:hover {
+    -webkit-text-stroke: 2.3px white;
+}
+
+.like-but:active,
+.like-but:visited {
+    color: white;
+}
+
+.noth {
+    cursor: default;
+    color: #3db2ff!important;
+}
+
+.btn-link {
+    font-size: 1em;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    border-radius: 60px;
+    transition: 0.2s linear;
+}
+
+.btn-link:hover:not(.noth) {
+    text-decoration: none;
+    font-size: 1.2em;
+    background-color: rgba(80, 80, 80, 0.744);
+}
+
+.btn-interacciones {
+    background-color: var(--card-color);
+    border-color: black;
+}
+
+#modelosdest>h4 {
+    margin: 2em;
+    font-size: 1.6em;
+}
+
+#modelosrec>h4 {
+    margin: 2em;
+    font-size: 1.6em;
+}
+
+#modelosrec {
+    margin-bottom: 2em;
+}
+
+.liked {
+    color: rgb(255, 50, 50);
+}
+
+.saved {
+    color: rgb(5, 169, 5)
+}
+
+a {
+    text-decoration: none;
+}
+
+.imagePointer:hover {
+    cursor: pointer;
+}
+
+.imagenTarjeta {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.imagen {
+    width: 100%;
+    height: 100%;
+}
+
+.imagen>img {
+    width: auto;
+    height: 100%;
+}
+
+.info {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    color: #ffffff;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: 0.2s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4em 2em 3em;
+}
+
+.info>a>span {
+    text-align: justify;
+    color: #ffffff;
+    width: 300px;
+    height: 200px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+    pointer-events: all;
+}
+
+.titulo {
+    position: absolute;
+    display: flex;
+    color: #000000;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 3;
+    padding: 10px 20px 10px 10px;
+    border-radius: 0 0px 40px 0px;
+    cursor: pointer;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    pointer-events: all;
+}
+
+.tarjetaModelo>button {
+    background: transparent;
+    width: 10px;
+    position: absolute;
+    z-index: 1;
+    margin-left: 310px;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.blur-div {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 46%;
+    font-weight: 600;
+    font-size: 1.4em;
+}

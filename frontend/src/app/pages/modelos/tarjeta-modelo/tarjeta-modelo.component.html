@@ -1,0 +1,65 @@
+<div class="card tarjetaModelo">
+    <article class="d-flex justify-content-between align-items-center p-3">
+        <div class=" d-flex justify-content-start">
+            <img src={{rutaImagenUsu}} class="me-2" style="height:30px; width:30px; border-radius: 100%;">
+            <a style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="d-flex align-items-center ms-4" routerLink="/user/modelo/{{nombreCompleto}}" class="h5 text-dark mb-0">{{nombreusu}}</a>
+        </div>
+        <div class="d-flex align-items-end">
+            <p class="text-dark m-0"><i class="fas fa-clock mx-1"></i>{{fechaFixed}}</p>
+        </div>
+    </article>
+
+    <article style="width: 100%; height: 200px; display: flex; flex-wrap: wrap; align-items: center; align-content: center; overflow: hidden;" class="">
+        <a routerLink="/modelo/{{uidModelo}}"><img routerLink="modelo/{{uidModelo}}" src="../../../../assets/uploads/imagenEscena/{{imagenPrevisualizacion}}" alt=" " class="card-img-top img-fluid imagePointer "></a>
+    </article>
+
+    <article class="text-left p-3">
+        <a style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="modellink h5" style="margin-top:1em;" routerLink="modelo/{{uidModelo}}"><strong>{{tituloModelo}}</strong></a>
+    </article>
+
+    <article class="d-flex justify-space-around p-3 pt-0 pb-0">
+        <button type="button" title="Visualizaciones" class="btn btn-link me-3">{{NVisitasModelo}}<i class="fa-solid fa-eye ms-3 "></i></button>
+        <button type="button" title="Me gusta" [ngClass]="{'liked': this.liked==true}" (click)="darLikeGuardar('like')" class="btn btn-link like-but me-3">{{NValoracionesModelo}}<i class="fa-solid fa-heart ms-3 "></i></button>
+        <button type="button" title="Guardar" [ngClass]="{'saved': this.saved==true}" (click)="darLikeGuardar('guardar')" class="btn btn-link">{{NGuardadosModelo}}<i class="fa-solid fa-bookmark ms-3 "></i></button>
+        <div class="row ps-1 pe-1 ms-1 ps-2 pe-2" *ngIf="bannerPriv=='true'" class="btn btn-link ms-3" [class]="bannerClass">{{bannerClass}}</div>
+    </article>
+
+    <article class="text-left p-3">
+        <p style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="modelDesc mb-0">{{descripcionModelo}}</p>
+    </article>
+</div>
+
+
+<!--<div class="card tarjetaModelo">
+    <div class="row" *ngIf="bannerPriv=='true'" [class]="bannerClass">
+        {{bannerClass}}
+    </div>
+    <div class="row">
+        <div class="col-md-2 d-flex justify-content-start">
+            <img src={{rutaImagenUsu}} style="height:50px; border-radius:30px;">
+        </div>
+        <div class="col d-flex justify-content-start">
+            <div class="d-flex align-items-center ms-2">
+                <a routerLink="/user/modelo/{{nombreCompleto}}" class="h5 text-dark">{{nombreusu}}</a>
+            </div>
+        </div>
+
+        <div class="col d-flex justify-content-end">
+            <div class="d-flex align-items-center">
+                <p class="text-dark"><i class="
+                  fas fa-clock mx-1"></i>{{fechaFixed}}</p>
+            </div>
+        </div>
+    </div>
+
+    <a routerLink="/modelo/{{uidModelo}}" class="bg-image hover-overlay ripple mt-4 d-flex justify-content-center" data-mdb-ripple-color=" light ">
+        <img src="../../../../assets/uploads/imagenEscena/{{imagenPrevisualizacion}}" alt=" " class="img-fluid ">
+    </a>
+    <a class="modellink h5" style="margin-top:1em;" routerLink="/modelo/{{uidModelo}}">{{tituloModelo}}</a>
+    <div class="filaN ">
+        <button type="button" title="Visualizaciones" class="btn btn-link ">{{NVisitasModelo}}<i class="fa-solid fa-eye ms-3 "></i></button>
+        <button type="button" title="Me gusta" [ngClass]="{'liked': this.liked==true}" (click)="darLikeGuardar('like')" class="btn btn-link like-but">{{NValoracionesModelo}}<i class="fa-solid fa-heart ms-3 "></i></button>
+        <button type="button" title="Guardar" [ngClass]="{'saved': this.saved==true}" (click)="darLikeGuardar('guardar')" class="btn btn-link ">{{NGuardadosModelo}}<i class="fa-solid fa-bookmark ms-3 "></i></button>
+    </div>
+    <p class="modelDesc ">{{descripcionModelo}}</p>
+</div>-->

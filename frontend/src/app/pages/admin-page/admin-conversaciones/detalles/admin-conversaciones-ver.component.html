@@ -1,0 +1,131 @@
+<div class="p-5 " id="content" data-page="detalles">
+  <section id="profile">
+    <div>
+
+      <div class="col pb-4">
+        <div class="col d-flex" style="justify-content: space-between;">
+            <div class="d-flex" style="align-items: center;">
+                <h3 class="p-0 m-0"><strong>{{this.asunto}}</strong></h3>
+            </div>
+            <div class="d-flex">
+                <button _ngcontent-hvl-c68="" class="btn text-white btn m-0 py-0" style="height: 40px; background-color: var(--secondary-color);" (click)="volver()">Volver</button>
+            </div>
+        </div>
+    </div>
+
+      <div class="d-flex">
+
+        <div class="col info-card card p-3 m-2" style="background-color: rgb(245, 245, 245);">
+          <h5 class="ms-2">Información</h5>
+
+                <div class="col elementos">
+                    <span>
+                    Asunto:
+                  </span>
+                    <span>
+                      {{this.asunto}}
+                  </span>
+                </div>
+                <div class="col elementos">
+                    <span>
+                    Usuario emisor:
+                  </span>
+                    <span>
+                      {{this.nombreEmisor}}
+                  </span>
+                </div>
+                <div class="col elementos">
+                  <span>
+                  Usuario receptor:
+                </span>
+                  <span>
+                  {{this.nombreReceptor}}
+                </span>
+              </div>
+              <div class="col elementos">
+                <span>
+                Fecha:
+              </span>
+                <span>
+                {{this.fecha | date:'short'}}
+              </span>
+            </div>
+            <div class="col elementos">
+              <span>
+              Cantidad de mensajes:
+            </span>
+              <span>
+              {{this.nMensajes}}
+            </span>
+          </div>
+        </div>
+
+        <div class="card-main card" >
+          <header class="d-flex chat" >
+              <h2>
+                <a class="nav-link" > Chat entre: <strong> <div (click)="irUsuario(this.nombreReceptor);"  class="d-inline-flex you-texto" style="margin:0px;">{{ this.nombreReceptor }}</div> </strong> / <strong><div (click)="irUsuario(this.nombreEmisor);" class="d-inline-flex me-texto"style="margin:0px;">{{this.nombreEmisor}}</div></strong></a>
+              </h2>
+          </header>
+
+          <div id="chatC" (scroll)="onElementScroll($event)">
+
+            <div *ngIf="this.hayMensajes; then mostrarChat; else mostrarVacio" >
+            </div>
+
+            <ng-template #mostrarVacio >
+              <div style="display:flex; align-items:center;">
+                <p style="margin: 0 auto;">No hay mensajes que mostrar</p>
+              </div>
+            </ng-template>
+
+
+            <ng-template #mostrarChat>
+              <div *ngFor="let mensaje of mensajesList" >
+
+                <!-- Todos los chats enviados por mí salen a la derecha -->
+                <div *ngIf="mensaje.idUsuarioEmi == this.uid; then mostrarDer; else mostrarIzq" >
+                </div>
+
+                <ng-template #mostrarDer>
+                  <li class="me">
+                    <div class="message emisor" (click)="accesoMencionado(mensaje.mensajes)">
+                      {{mensaje.mensajes}}
+                    </div>
+                    <div class="entete">
+                      <h3 class="me-2">
+                        {{mensaje.fecha | date:'shortDate'}}
+                        <div class="text-muted div-me">
+                          {{mensaje.fecha | date:'shortTime'}}
+                        </div></h3>
+                    </div>
+                  </li>
+                </ng-template>
+
+                <ng-template #mostrarIzq>
+                  <li class="you">
+                    <div class="message receptor" (click)="accesoMencionado(mensaje.mensajes)">
+                      {{mensaje.mensajes}}
+                    </div>
+                    <div class="entete">
+                      <span class="status green"></span>
+                      <h3 class="me-2">
+                        {{mensaje.fecha | date:'shortDate'}}
+                        <div class="text-muted div-me">
+                          {{mensaje.fecha | date:'shortTime'}}
+                        </div>
+                      </h3>
+                    </div>
+                  </li>
+                </ng-template>
+
+              </div>
+          </ng-template>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+

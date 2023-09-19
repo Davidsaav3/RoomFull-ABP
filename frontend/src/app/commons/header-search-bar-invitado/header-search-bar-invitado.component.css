@@ -1,0 +1,25 @@
+section {
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.6em 0 2em;
+}
+
+section>* {
+    margin: 0;
+    color: #fff;
+}
+
+section>h1 {
+    font-size: 3.2em;
+    margin-bottom: 1em;
+    font-weight: 750;
+}
+
+section>h4 {
+    font-size: 1.7em;
+    font-weight: 650;
+    text-align: center;
+}

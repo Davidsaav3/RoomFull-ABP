@@ -1,0 +1,97 @@
+<section class="editar p-5" style="background-color: rgb(245, 245, 245);">
+    <div class="row m-0 p-0 d-flex">
+
+        <div class="col-12 col-xl-6 col-lg-6 m-0 p-0 pb-5">
+            <form class="px-4" id="editarform" (ngSubmit)="editar()" [formGroup]="editarForm">
+                <h4 class="fw-bold">Editar perfil</h4>
+
+                <!-- Input usuario -->
+                <div class="form-group">
+                    <label for="inputnombreUsuario"></label>
+                    <input type="text" class="form-control" formControlName="nombreUsuario" (change)="cambioCheckForm();" id="inputnombreUsuario" placeholder="Nombre de usuario">
+                    <div class="invalid-feedback">
+                        Este campo no debe estar vacío.
+                    </div>
+                </div>
+
+                <!-- Input nombre -->
+                <div class="form-group">
+                    <label for="inputnombre"></label>
+                    <input type="text" class="form-control" formControlName="nombre" id="inputnombre" (change)="cambioCheckForm();" placeholder="Nombre">
+                    <div class="invalid-feedback">
+                        Este campo no debe estar vacío.
+                    </div>
+                </div>
+
+                <!-- Input apellidos -->
+                <div class="form-group">
+                    <label for="inputApellidos"></label>
+                    <input type="text" class="form-control" formControlName="apellidos" id="inputApellidos" placeholder="Apellidos">
+                </div>
+
+                <!-- Input email -->
+                <div class="form-group">
+                    <label for="inputemail"></label>
+                    <input type="email" class="form-control" formControlName="email" (change)="cambioCheckForm();" id="inputemail" placeholder="Email" required="">
+                    <div class="invalid-feedback">
+                        {{ mensajeErrorEmail }}
+                    </div>
+                </div>
+
+                <!-- Input teléfono -->
+                <div class="form-group">
+                    <label for="inputTelf"></label>
+                    <input type="text" class="form-control" formControlName="telefono" id="inputTelf" placeholder="Teléfono">
+                </div>
+
+                <!-- Input empresa -->
+                <div class="form-group">
+                    <label for="inputempresa"></label>
+                    <input type="text" class="form-control" formControlName="empresa" id="inputEmpresa" placeholder="Profesión / Empresa">
+                </div>
+
+                <!-- Botón de Editar -->
+                <div class="d-grid mt-3">
+                    <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Cambiar datos</button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="col-12 col-xl-6 col-lg-6 m-0 p-0 ">
+           
+          <form class="px-4" [formGroup]="formDesc" id="formDesc" (ngSubmit)="cambiarDescripcion(this)">
+            <h4 class="fw-bold">Editar descripción</h4>
+
+              <div>
+                  <label for="newDescription" class="form-label"></label>
+                  <textarea class="form-control" formControlName="description" id="newDescription" rows="3" [placeholder]="this.descripcion"></textarea>
+                  <div class="d-grid mt-3">
+                    <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Cambiar descripción</button>
+                </div>
+              </div>
+          </form>
+
+          <form class="px-4 mt-5" (ngSubmit)="editarFoto()" [formGroup]="editarFotoForm">
+              <h4 class="fw-bold">Cambiar foto de perfil</h4>
+              <!-- Grid de dos columnas para foto -->
+              <div style="align-items: center;" class="d-flex p-0 m-0">
+                  <input type="file" accept="image/*" style="display:none;" id="inputimage" class="form-control" formControlName="image" (change)="cargararchivo($event); cambioCheckForm();" #fileUpload>
+                  <button type="button" class="btn btn2 text-white" (click)="fileUpload.click()">Selecciona foto de perfil</button>
+                  <div class="invalid-feedback">
+                      Debes seleccionar una imagen.
+                  </div>
+
+                  <img id="output" class='mx-auto mt-0 m-2' src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" style="width:fit-content;height:128px ;" />
+              </div>
+              <!-- Botón de foto -->
+              <div class="d-grid">
+                  <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Cambiar foto</button>
+              </div>
+          </form>
+
+      </div>
+    </div>
+
+</section>

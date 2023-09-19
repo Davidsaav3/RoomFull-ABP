@@ -1,0 +1,78 @@
+<div class="tarjetaPlanes">
+    <section id="titulo">
+        <span>{{nombre}}</span>
+    </section>
+    <section id="precio">
+        <span>{{ precio | currency: 'EUR' }}</span>
+        <span>/mes</span>
+    </section>
+    <section id="info">
+        <div id="desc">{{descripcion}}</div>
+        <div id="caract">
+            <div *ngFor="let c of caract">
+                {{c}}
+            </div>
+        </div>
+    </section>
+
+    <div *ngIf="this.estaRegistrado ; then registrado; else noRegistrado"></div>
+    <ng-template #registrado>
+
+      <div *ngIf="(precio == 0) ; then registroGratis; else registroDemas"></div>
+      <ng-template #registroGratis>
+        <section id="enlaces">
+          <div>
+              <a aria-label="Elegir plan de sucripción." style="text-decoration: none;">
+                  <div class="disabled">
+                      <strong>REGISTRADO</strong>
+                  </div>
+              </a>
+          </div>
+      </section>
+      </ng-template>
+
+      <ng-template #registroDemas>
+        <div *ngIf="(this.estaRegistrado && this.idSus === this.sus) ; then activo; else noActivo"></div>
+        <!-- Registrado y con la suscripción activa -->
+        <ng-template #activo>
+          <section id="enlaces" >
+            <div>
+                <a aria-label="Elegir plan de sucripción." style="text-decoration: none;">
+                    <div class="disabled">
+                        <strong>SUSCRITO</strong>
+                    </div>
+                </a>
+            </div>
+        </section>
+        </ng-template>
+
+        <!-- Registrado y con la suscripción no activa -->
+        <ng-template #noActivo>
+          <section id="enlaces">
+            <div>
+                <!-- Debería llevar a un modal para iniciar sesión o registrarse -->
+                <a aria-label="Elegir plan de sucripción." (click)="irPaypal();" routerLinkActive="active" [routerLink]="enlace" style="text-decoration: none;">
+                    <div>
+                        <strong>ELEGIR</strong>
+                    </div>
+                </a>
+            </div>
+        </section>
+        </ng-template>
+      </ng-template>
+
+
+    </ng-template>
+    <ng-template #noRegistrado>
+      <section id="enlaces">
+        <div>
+            <a aria-label="Elegir plan de sucripción." (click)="lanzarRegistro();" routerLinkActive="active" style="text-decoration: none;">
+                <div>
+                    <strong>ELEGIR</strong>
+                </div>
+            </a>
+        </div>
+    </section>
+    </ng-template>
+
+</div>

@@ -1,0 +1,8 @@
+<div class="ui-wrapper">
+    <app-ui-infobar-top (menuState)="cambiarMenuState($event)" class=""></app-ui-infobar-top>
+    <!--     (occultUi)="mostrarOcultarUi($event)"
+ -->
+    <app-ui-sidebar-left class="ui-partial"></app-ui-sidebar-left>
+    <app-ui-sidebar-right [menuState2]='this.menuStateBool' class="ui-partial"></app-ui-sidebar-right>
+    <app-ui-infobar-bottom style="overflow: hidden;" class=""></app-ui-infobar-bottom>
+</div>

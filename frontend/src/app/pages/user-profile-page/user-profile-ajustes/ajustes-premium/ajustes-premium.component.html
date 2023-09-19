@@ -1,0 +1,17 @@
+<section class="editar p-5" style="background-color: rgb(245, 245, 245);">
+    <div class="row m-0 p-0 d-flex">
+        <div class="col-12 m-0 p-0">
+
+            <div class="d-flex px-4" style="align-items: center; justify-content: space-between;">
+                <h4 class="fw-bold">Administrar suscripciones</h4>
+            </div>
+
+            <div id="resultados" class="container">
+                <div class="planesDisponibles" *ngFor="let plan of planesDisponibles">
+                    <app-tarjeta-planes uidPlan={{plan.uid}} class="tarjetaPlanes"></app-tarjeta-planes>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

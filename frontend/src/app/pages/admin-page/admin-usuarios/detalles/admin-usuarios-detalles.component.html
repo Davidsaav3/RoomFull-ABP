@@ -1,0 +1,104 @@
+<div class="p-5 " id="content" data-page="detalles">
+  <section id="profile">
+          <div class="col pb-4">
+              <div class="col d-flex" style="justify-content: space-between;">
+                  <div class="d-flex" style="align-items: center;">
+                      <img class="profile-pic " [src]="imagen" crossorigin="anonymous">
+                      <h3 class="p-0 m-0"><strong>{{this.usuario.nombreUsuario}}</strong></h3>
+                  </div>
+                  <div class="d-flex">
+                      <button style="background-color: var(--secondary-color);" class="btn text-white btn me-2" (click)="editar()">Editar usuario</button>
+                      <button _ngcontent-hvl-c68="" class="btn text-white btn m-0 py-0" style="height: 40px; background-color: var(--secondary-color);" (click)="volver()">Volver</button>
+                  </div>
+              </div>
+          </div>
+
+          <div class="d-flex">
+
+                <div class="col card p-3 m-2" style="background-color: rgb(245, 245, 245);">
+                  <h4 class="">Perfil</h4>
+
+                        <div class="col elementos">
+                            <span>
+                            Apellidos:
+                          </span>
+                            <span>
+                            {{usuario.apellidos}}
+                          </span>
+                        </div>
+                        <div class="col elementos">
+                            <span>
+                            Email:
+                          </span>
+                            <span>
+                            {{usuario.email}}
+                          </span>
+                        </div>
+                        <div class="col elementos">
+                            <span>
+                            Fecha registro:
+                          </span>
+                            <span>
+                            {{usuario.fechaCreacion | date: 'full'}}
+                          </span>
+                        </div>
+                        <div class="col elementos">
+                            <span>
+                          Empresa:
+                        </span>
+                            <span>
+                          {{usuario.empresa || "Sin empresa asignada"}}
+                        </span>
+                        </div>
+                        <div class="col elementos">
+                            <span>
+                            Teléfono:
+                          </span>
+                            <span>
+                            {{usuario.telefono || "Sin telefono asignado"}}
+                          </span>
+                        </div>
+                      </div>
+
+                  <div class="col card p-3 m-2" style="background-color: rgb(245, 245, 245);">
+                    <h4 class="">Descripción</h4>
+                    <div class="mt-3 p-4 pt-0 pb-0">
+                      <p>{{usuario.descripcion || 'Sin descripción'}}</p>
+                    </div>
+                </div>
+
+                <div class="col card p-3 m-2" style="background-color: rgb(245, 245, 245);">
+                      <h4 class="">Suscripción</h4>
+                    <div class="col elementos" *ngIf="!tieneSub">
+                        <span>
+                        Usuario registrado sin suscripción
+                      </span>
+                    </div>
+                    <div class="col elementos" *ngIf="tieneSub">
+                        <span>
+                      ID de la suscripción:
+                    </span>
+                        <span>
+                        {{usuario.subscription}}
+                    </span>
+                    </div>
+                    <div class="col elementos" *ngIf="tieneSub">
+                      <span>
+                    Nombre del tipo de la suscripción:
+                  </span>
+                      <span>
+                      {{this.nombreSus}}
+                  </span>
+                  </div>
+                  <div class="col elementos" *ngIf="tieneSub">
+                    <span>
+                  Precio del tipo de la suscripción:
+                </span>
+                    <span>
+                    {{this.precioSus}}
+                </span>
+                </div>
+                </div>
+              </div>
+    </section>
+</div>

@@ -1,0 +1,68 @@
+<section class="container-fluid bg-gris-claro">
+    <div class="row" style="align-items: center; height: 89vh; justify-content: center;">
+        <div class="col-sm-9 col-md-7 col-lg-5" >
+            <div class="card-body p-5 card rounded-25">
+
+                <h3><strong>Inicio de sesión</strong></h3>
+                <form id="loginform" (ngSubmit)="login()" [formGroup]="loginForm">
+
+                <!-- Input usuario -->
+                <div class="form-group">
+                    <label for="inputemail"></label>
+                    <input type="email" class="form-control" id="inputemail" placeholder="Email" (change)="cambioCheckForm();" formControlName="email" aria-label="Username" aria-describedby="basic-addon1" required="true">
+                    <div class="invalid-feedback">
+                        Este campo no debe estar vacío
+                    </div>
+                </div>
+
+                <!-- Input contraseña -->
+                <div class="form-group">
+                    <label for="inputpassword"></label>
+                    <input type="password" class="form-control" id="inputpassword" placeholder="Contraseña" (change)="cambioCheckForm();" formControlName="password" placeholder="Password" required="true">
+                    <div class="invalid-feedback">
+                        Este campo no debe estar vacío
+                    </div>
+                </div>
+
+                    <!-- Grid de dos columnas -->
+                    <div class="row mt-2 d-flex">
+                        <div class="col-8">
+                            <p class="pt-2 m-0"><a class="" routerLink="/recovery" style="color: black; text-decoration: none;">¿Has olvidado tu contraseña?</a></p>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="formRem" formControlName="remember" id="customControlAutosizing1" />
+                                <label class="form-check-label" for="formRem"> Recuérdame </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Login -->
+                    <div class="d-grid mt-4">
+                        <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit" [disabled]="waiting"><i class="fas fa-spinner fa-spin m-r-10" *ngIf="waiting"></i>Iniciar sesión</button>
+                    </div>
+
+                    <!-- Separador -->
+                    <div class="divider d-flex align-items-center my-4">
+                        <p class="text-center fw-bold mx-3 mb-0 text-muted">O</p>
+                    </div>
+
+                    <!-- Botón de Login con Google -->
+                    <div class="d-grid mb-2">
+                        <div class="justify-content-center d-flex ">
+                            <div id="buttonDiv" class="rounded-25"></div>
+                        </div>
+                    </div>
+
+                    <!-- Separador -->
+                    <div class="divider d-flex align-items-center my-4"></div>
+
+                    <!-- Link -->
+                    <p class="text-center text-muted mt-2 m-0">¿No tienes cuenta? <a routerLink="/registro" class="fw-bold text-body"  style="color: black; text-decoration: none;">Regístrate</a></p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

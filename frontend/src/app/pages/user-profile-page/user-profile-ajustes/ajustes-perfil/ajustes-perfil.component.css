@@ -1,0 +1,151 @@
+.mt2{
+    margin-top: 40px;
+}
+
+.mr{
+    margin-left: 15px;
+}
+
+.mt{
+    margin-top: 15px;
+}
+
+.lab{
+    font-size: 21px;
+}
+
+/**/
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+.ml{
+    margin-left: 15px;
+}
+
+/**/
+
+#header-profile {
+  padding: 10px 0 30px;
+  background-color: var(--divider-color);
+}
+
+.profile-pic {
+  background-color: var(--divider-color);
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#header-profile>div:nth-child(1) {
+
+  padding: 3.2em 0 2.6em;
+}
+
+#header-profile>div:nth-child(1)>a {
+  height: fit-content;
+}
+
+#header-profile>div>div>ul>li {
+  font-weight: bold;
+}
+
+#header-profile>div>div>h3{
+font-weight: 700;
+}
+
+#header-profile>div>div>h5{
+font-weight: 500;
+}
+
+.btn2 {
+  background-color: var(--secondary-color)
+}
+
+.editar {
+  min-height: 35vh;
+}
+
+/* Css registro */
+
+.rounded-25 {
+  border-radius: 25px;
+}
+
+.bg-gris-claro{
+  background-color: var(--third-color);
+}
+
+.btn-google {
+  background-color: var(--divider-color);
+}
+
+.btn-seleccionar{
+  background-color: var(--divider-color);
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: #a4a4a4;
+}

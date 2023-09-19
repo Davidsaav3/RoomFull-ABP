@@ -1,0 +1,89 @@
+<section class="editar p-5" style="background-color: rgb(245, 245, 245);">
+    <div class="row m-0 p-0 d-flex">
+
+
+          <div *ngIf="usuario.metodo === 'normal'; then ifNormal; else ifGoogle;" >
+          </div>
+          <ng-template #ifNormal>
+
+            <div class="col-12 col-xl-6 col-lg-6 m-0 p-0">
+                  <form class="px-4  pb-5 needs-validation" id="editarpassform" (ngSubmit)="editarPass()" [formGroup]="editarPassForm">
+                    <h4 class="fw-bold">Cambiar contraseña</h4>
+                    <!-- Input contraseña actual -->
+                    <div class="form-group mb-3 needs-validation">
+                        <label for="inputPassActual" class="form-label"></label>
+                        <input type="password" class="form-control" formControlName="passActual" (change)="cambioCheckForm();" id="inputPassActual" placeholder="Contraseña actual">
+                        <div class="invalid-feedback">
+                            Introduce tu contraseña actual.
+                        </div>
+                    </div>
+
+                    <!-- Inputs cambio contraseña -->
+                    <div class="form-group mt-3">
+                        <label for="inputPassNueva1" class="mb-2 form-label">Escriba una nueva contraseña</label>
+                        <input type="password" class="form-control" formControlName="passNueva1" (change)="cambioCheckForm();"  id="inputPassNueva1" placeholder="Contraseña nueva">
+                        <div class="invalid-feedback">
+                            Debes introducir una contraseña válida que cumpla lo siguiente.
+                              <ul>
+                                  <li>Mínimo 9 caracteres</li>
+                                  <li>Una letra minúscula</li>
+                                  <li>Una letra mayúscula</li>
+                                  <li>Un número</li>
+                                  <li>Un carácter especial ({{caracteresEspeciales}})</li>
+                              </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassNueva2"></label>
+                        <input type="password" class="form-control" formControlName="passNueva2" (change)="cambioCheckForm();" id="inputPassNueva2" placeholder="Repite la contraseña">
+                        <div class="invalid-feedback">
+                            Debes introducir una contraseña válida que cumpla lo siguiente.
+                              <ul>
+                                  <li>Mínimo 9 caracteres</li>
+                                  <li>Una letra minúscula</li>
+                                  <li>Una letra mayúscula</li>
+                                  <li>Un número</li>
+                                  <li>Un carácter especial ({{caracteresEspeciales}})</li>
+                              </ul>
+                        </div>
+                    </div>
+
+                    <div class="d-grid mt-5">
+                      <button style="background-color: var(--primary-color);" class="btn btn-primary fw-bold" type="submit">Cambiar contraseña</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-12 col-xl-6 col-lg-6 m-0 p-0">
+                  <h4 class="fw-bold">Asistente</h4>
+                  <!--  -->
+                  <p class="m-0 mt-4">Mostrar botón asistente<label class="switch ml">
+                      <input #asistente type="checkbox" id="asistente" class="ms-2" checked (change)="cambiarAsistente(asistente.checked)" value={{this.asistente}}>
+                      <span class="slider round"></span>
+                  </label></p>
+                <h4 class="fw-bold mt-3">Cuenta</h4>
+                  <!--  -->
+                  <button _ngcontent-ipq-c89="" (click)="MostrarModalesEliminar()"type="button" class="btn btn2 text-white mt-2">Eliminar cuenta</button>
+                 
+                </div>
+            </ng-template>
+
+          <ng-template #ifGoogle>
+            <div class="col-6 col-xl-6 col-lg-6 m-0 p-0">
+              <h4 class="fw-bold">Asistente</h4>
+              <!--  -->
+              <p class="m-0 mt-4">Mostrar botón asistente<label class="switch ml">
+                  <input #asistente type="checkbox" id="asistente" class="ms-2" checked (change)="cambiarAsistente(asistente.checked)" value={{this.asistente}}>
+                  <span class="slider round"></span>
+              </label></p>
+              
+              <h4 class="fw-bold">Cuenta</h4>
+              <!--  -->
+              <button _ngcontent-ipq-c89="" type="button" class="btn btn2 text-white" (click)="MostrarModalesEliminar()">Eliminar cuenta</button>
+             
+            </div>
+          </ng-template>
+
+    </div>
+
+</section>

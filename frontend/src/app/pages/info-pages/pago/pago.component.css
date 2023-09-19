@@ -1,0 +1,56 @@
+#tarjeta {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 2% 10% 10% 10%;
+    padding: 3vh;
+    border-radius: 5px;
+    background-color: white;
+}
+
+#primera {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#segunda {
+    text-align: center;
+}
+
+#segunda>div>a>div {
+    border-radius: 30px;
+    background: transparent;
+    color: #000000;
+    height: 5vh;
+    width: 16vh;
+    margin: 10px;
+    border: 2px solid #000000;
+    transition-duration: 0.1s;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#segunda>div>a>div:hover {
+    transform: scale(1.05);
+}
+
+#caract {
+    /*min-height: 40vh;*/
+    max-width: 80vh;
+    margin: 2vh;
+    padding: 2vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+ngx-paypal{
+    width: -webkit-fill-available;
+}
+#caract>span {
+    height: 50px;
+    margin: 5px;
+    padding: 5px;
+}

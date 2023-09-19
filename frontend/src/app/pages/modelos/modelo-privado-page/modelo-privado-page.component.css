@@ -1,0 +1,105 @@
+/* !!!!!!!! MENSAJE MODAL !!!!!!!!! */
+
+.ModalContainer {
+    position: absolute;
+    top: 1px;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.651);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.mensajemodal {
+    color: rgb(255, 255, 255);
+    position: sticky;
+    top: 35vh;
+    bottom: 35vh;
+    height: 30vh;
+    background-color: rgb(90, 90, 90);
+    border-radius: 20px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.mensajemodal>div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+/* ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ MENSAJE MODAL ¡¡¡¡¡¡¡¡¡¡¡ */
+
+.above-canvas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4%;
+    margin-top: 1em;
+}
+
+
+/* #model-wrapper>* {
+    display: flex;
+    justify-content: center;
+} */
+
+@media only screen and (max-width: 900px) {
+    #renderCanvas {
+        max-width: 100vw!important;
+        max-height: 100vh!important;
+    }
+    #ui-id {
+        max-width: 100vw!important;
+        left: 0px!important;
+    }
+}
+
+#ui-id {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    height: 100%;
+}
+
+#model-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#renderCanvas:not(.verM) {
+
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.engine-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#engineLoader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+}
+
+.liked {
+    color: #dc3545;
+}
+
+.saved {
+    color: rgb(5, 169, 5)
+}
+
+#widgetIcon{
+    display: none;
+}

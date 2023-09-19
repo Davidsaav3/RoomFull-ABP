@@ -1,0 +1,112 @@
+<div class="ps-5 pt-4 pe-5 pb-4">
+
+    <div class="row" >
+
+        <div class="col-10">
+            <h1 class="fw-bold mt-3">Crear modelo</h1>
+        </div>
+
+        <div class="col">
+            <div class="col d-flex justify-content-end">
+                <div><button type="button" class="mt-4 py-3 btn me-3" (click)="volver()"  style="background-color: var(--primary-color); color: white; font-weight: 400;"  >Volver</button></div>
+            </div>
+        </div>
+
+        <form (ngSubmit)="subirModelo()" id="subirModelForm" class="row g-3 m-5"> <!-- [formGroup]="subirModelForm" -->
+            <h3> Subir modelo</h3>
+            <div class="form-floating col-12">
+                <input type="text" class="form-control" formControlName="title" id="inputtitle" (change)="cambioCheckForm();" placeholder="Título">
+                <label for="inputtitle" class="floatingInput">Título del modelo</label>
+                <div class="invalid-feedback">
+                    Este campo no debe estar vacío.
+                </div>
+            </div>
+            <div class="form-floating col-12 my-4">
+                <textarea class="form-control" formControlName="description" id="inputdescription" placeholder="Descripción" (change)="cambioCheckForm();" style="height: 100px"></textarea>
+                <label for="inputdescription" class="floatingInput">Descripción del modelo</label>
+                <div class="invalid-feedback">
+                    Este campo no debe estar vacío.
+                </div>
+            </div>
+
+
+            <div class="col-md-6 p-3 d-flex flex-column">
+                <input type="file" accept="image/*" style="display:none;" id="inputimage" class="form-control" formControlName="image" (change)="cargararchivo($event); cambioCheckForm();" #fileUpload>
+                <button type="button" class="btn btn-info" (click)="fileUpload.click()">Selecciona imagen de portada</button>
+                <div class="invalid-feedback">
+                    Debes seleccionar una imagen.
+                </div>
+
+                <img id="output" class='mx-auto my-2' src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg" style="width:fit-content;height:150px ;" />
+                <p>{{imageName || "No se ha subido ningún archivo"}}</p>
+            </div>
+            <div class="col-md-6 p-3 d-flex flex-column">
+                <input type="file" style="display:none;" accept=".gltf" class="form-control" id="inputmodel" formControlName="model" (change)="cargarmodelo($event);  cambioCheckForm();" #modelUpload>
+                <button type="button" class="btn btn-info" (click)="modelUpload.click()">Selecciona modelo</button>
+
+                <div class="invalid-feedback">
+                    Debes seleccionar un modelo.
+                </div>
+
+                <img id="output2" class='mx-auto my-2' style="width:fit-content;height:150px ;" /> {{fileName || "No se ha subido ningún archivo"}}
+            </div>
+
+            <div class="col-12">
+                <div class="form-check form-switch">
+                    <input class="form-check-input form-control" style="width:3.4em; height:1.7em;" formControlName="public" type="checkbox" id="flexSwitchCheckChecked">
+                    <label class="form-check-label" style="font-size:1.4em; margin-left:10px" for="flexSwitchCheckChecked">Modelo público</label>
+                </div>
+            </div>
+            <div style="display:none" class="col-12 my-2">
+                <p>Selecciona etiquetas</p>
+                <!-- Etiquetas -->
+                <div class="row ms-0 me-0">
+                    <!-- Slider -->
+                    <div class="col-8 mx-5">
+                        <div class="card-group card-group-scroll ps-0 pe-0 row mt-4">
+                            <div class="card  border-0">
+                                <div class="card-body tag-filtro  rounded">
+                                    <a routerLink="/busqueda" class="card-title text-dark text-decoration-none fw-bold p-2 ">#españa (32)</a>
+                                </div>
+                            </div>
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <a routerLink="/busqueda" class="card-title text-dark text-decoration-none ">#español (32)</a>
+                                </div>
+                            </div>
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <a routerLink="/busqueda" class="card-title text-dark text-decoration-none">#casa (14)</a>
+                                </div>
+                            </div>
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <a routerLink="/busqueda" class="card-title text-dark text-decoration-none">#español (32)</a>
+                                </div>
+
+                            </div>
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <a routerLink="/busqueda" class="card-title text-dark text-decoration-none">#español (32)</a>
+                                </div>
+                            </div>
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <a routerLink="/busqueda" class="card-title text-dark text-decoration-none ">#español (32)</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col align-self-center etiqueta-mas">
+                        <a routerLink="/etiqueta" class="fw-bold text-decoration-none text-dark fs-9 tag-etiqueta rounded p-2 border text-nowrap">Más etiquetas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button style="background-color: var(--primary-color);" type="submit" class="btn btn-primary">Subir modelo</button>
+            </div>
+        </form>
+    </div>
+
+</div>

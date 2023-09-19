@@ -1,0 +1,139 @@
+<section class="container-fluid bg-gris-claro">
+    <div class="row">
+
+
+    <!-- ///////////////////// TIEMPO USUARIOS ///////////////////// -->
+
+    <!-- cantidad 1 -->
+    <div class="card-body p-0 card row rounded-25 m-2 d-flex col-lg-6" style="flex-direction: row;">
+        <h3 class="mt-3 ms-3">Tiempo medio </h3>
+
+        <div class="col-3">
+            <div id="chart-container" echarts [options]="tiempo_usuarios_velocidad_1" style="height: 180px;transform: scale(1.1);"></div>
+        </div>
+        <!-- lineas 1 -->
+        <div class="col-9">
+            <div echarts [options]="tiempo_usuarios_lineas_1" [merge]="updateOptions" class="demo-chart" style="height: 180px;transform: scale(1);"></div>
+        </div>
+    </div>
+
+    <!-- ///////////////////// 5 PAISES X SUSCRIPCIÓN ///////////////////// -->
+
+    <!-- barras-2 -->
+    <div class="card-body p-0 card rounded-25 col-lg-5 m-2">
+        <div class="d-flex" style="justify-content: space-between;">
+            <h3 class="mt-3 ms-3">Países con más suscripciones</h3>
+
+            <div class="dropdown mt-3 me-3" style="z-index: 100;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: rgb(228, 228, 228); color: black; border: 0px;">
+                    <strong>{{tipo_sus}}</strong>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item cat" (click)="cambiar_tip(0)">Gratuita</a>
+                <a class="dropdown-item cat" (click)="cambiar_tip(1)">Premium</a>
+                <a class="dropdown-item cat" (click)="cambiar_tip(2)">Premium Plus</a>
+                <a class="dropdown-item cat" (click)="cambiar_tip(3)">Premium Ultra</a>
+                </div>
+            </div>
+        </div>
+        <div echarts [options]="paises_suscripcion_barras_1" class="demo-chart" style="height: 180px; transform: scale(1.1);"></div>
+    </div>
+
+
+    <!-- ///////////////////// REPERCUSION MODELO ///////////////////// -->
+
+    <div class="card-body p-0 card row rounded-25 m-2 d-flex col-lg-2" style="flex-direction: row;">
+        <div class="d-flex" style="justify-content: space-between;">
+            <h3 class="mt-3 ms-3">Modelos</h3>
+
+            <div class="dropdown mt-3 me-1">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: rgb(228, 228, 228); color: black; border: 0px;transform: scale(1.1);">
+                    <strong>{{categoria}}</strong>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item cat" (click)="cambiar_cat(0)">Visualizaciones</a>
+                <a class="dropdown-item cat" (click)="cambiar_cat(1)">Me gustas</a>
+                <a class="dropdown-item cat" (click)="cambiar_cat(2)">Guardados</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- cantidad 1 -->
+            <div class="col-12">
+                <div class="row" style="justify-content: space-around;">
+                    <div class="col-5" id="chart-container" echarts [options]="repercusion_modelo_velocidad_1" style="width: 100px;transform: scale(1.1); height: 100px;"></div>
+                    <div class="col-7" style=" display: flex; flex-direction: column; justify-content: center;">
+                        <p class="m-0"><strong>{{this.arrMetodoModMasRep_1[0][0].nombre}}</strong></p>
+                        <p class="m-0">{{this.arrMetodoModMasRep_1[0][0].nombre_usuario}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- cantidad 1 -->
+            <div class="col-12">
+                <div class="row" style="justify-content: space-around;">
+                    <div class="col-5" id="chart-container" echarts [options]="repercusion_modelo_velocidad_2" style="width: 100px;transform: scale(1.1); height: 100px;"></div>
+                    <div class="col-7" style=" display: flex; flex-direction: column; justify-content: center;">
+                        <p class="m-0"><strong>{{this.arrMetodoModMasRep_1[0][1].nombre}}</strong></p>
+                        <p class="m-0">{{this.arrMetodoModMasRep_1[0][1].nombre_usuario}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- cantidad 1 -->
+            <div class="col-12">
+                <div class="row" style="justify-content: space-around;">
+                    <div class="col-5" id="chart-container" echarts [options]="repercusion_modelo_velocidad_3" style="width: 100px;transform: scale(1.1); height: 100px;"></div>
+                    <div class="col-7" style=" display: flex; flex-direction: column; justify-content: center;">
+                        <p class="m-0"><strong>{{this.arrMetodoModMasRep_1[0][2].nombre}}</strong></p>
+                        <p class="m-0">{{this.arrMetodoModMasRep_1[0][2].nombre_usuario}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- barras 1
+        <div class="col-6">
+            <div echarts [options]="repercusion_modelo_barras_1" class="demo-chart" (chartInit)="onChartEvent($event, 'chartInit')" (chartClick)="onChartEvent($event, 'chartClick')" (chartDblClick)="onChartEvent($event, 'chartDblClick')" (chartMouseDown)="onChartEvent($event, 'chartMouseDown')" (chartMouseUp)="onChartEvent($event, 'chartMouseUp')" (chartMouseOver)="onChartEvent($event, 'chartMouseOver')" (chartMouseOut)="onChartEvent($event, 'chartMouseOut')" (chartGlobalOut)="onChartEvent($event, 'chartGlobalOut')" (chartContextMenu)="onChartEvent($event, 'chartContextMenu')" (chartDataZoom)="onChartEvent($event, 'chartDataZoom')"></div>
+        </div>-->
+    </div>
+
+    <!-- ///////////////////// SUSCRIPCIÓNES SUPERIORES ///////////////////// -->
+
+    <!-- Barras 0 -->
+    <div class="card-body p-0 card rounded-25 col-lg-4 m-2">
+        <h3 class="mt-3 ms-3">Suscripciones premium</h3>
+
+        <!--<div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            seleccionar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>-->
+
+        <div echarts [options]="suscripciones_superiores_barras_1" style="height: 280px; transform: scale(1);"></div>
+    </div>
+
+
+     <!-- ///////////////////// USUARIOS CONVERSACIONES ///////////////////// -->
+
+     <div class="card-body p-0 card rounded-25 col-lg-2 m-2">
+        <h3 class="mt-3 ms-3">Conversaciones</h3>
+        <div echarts [options]="usuarios_conversaciones_barras_1" class="demo-chart" style="height: 280px; transform: scale(1.3);"></div>
+    </div>
+
+
+    <!-- ///////////////////////////////////////////////////////////// -->
+
+
+    </div>
+</section>

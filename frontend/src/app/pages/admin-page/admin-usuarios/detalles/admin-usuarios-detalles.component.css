@@ -1,0 +1,85 @@
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 180px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+    
+
+.nombre {
+    align-content: center;
+    display: grid;
+    margin-left: 70px;
+}
+
+.cabecera-perfil {
+    display: flex;
+    border-bottom: solid #000000 2px;
+    padding: 30px;
+}
+
+.boton {
+    border: solid;
+    width: 200px;
+    margin: 20px;
+    background-color: whitesmoke;
+}
+
+.elementos {
+    display: flex;
+    flex-direction: column;
+}
+
+.elementos>span:first-child {
+    background-color: white;
+    color: #000000;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.elementos>span:last-child {
+    margin-left: 10px;
+}
+
+.containerPerfil {
+    border-radius: 20px;
+    border: solid 2px;
+    width: 100%;
+    margin-top: 3rem !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 1rem !important;
+    max-width: 550px;
+}
+
+.cabeceraContainer {
+    width: 100%;
+    border-bottom: solid 2px;
+    padding: 1rem !important;
+}
+
+.containerDetalles {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.descripcion {
+    background-color: white;
+    min-height: 35vh;
+}
+
+.maximo {
+    width: 100%;
+}
+
+@media all and (min-width: 1460px) {
+    .containerDetalles {
+        flex-direction: inherit;
+        align-items: unset;
+        justify-content: center;
+    }
+}

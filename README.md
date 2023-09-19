@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/ABPMultimediaUA/roomfull">
-    <img src="./documents/logo.png" alt="Logo" width="80" height="80">
+    <img src="./documents/images/logo.png" alt="Logo" width="80" height="80">
   </a>
   <h1 align="center"> RoomFull </h1>
   <p align="center">
